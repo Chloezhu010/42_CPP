@@ -1,5 +1,5 @@
 # executable name
-NAME = megaphone
+NAME = phonebook
 
 # compiler & flags
 CPP = c++
@@ -7,7 +7,8 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 # src files
-SRC = megaphone.cpp
+SRC = Contact.cpp \
+		test_contact.cpp
 
 # obj files
 OBJ = $(SRC:.cpp=.o)
