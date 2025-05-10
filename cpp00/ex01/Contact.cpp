@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 11:01:16 by chloe             #+#    #+#             */
-/*   Updated: 2025/05/10 16:45:55 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/10 17:38:45 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,11 +126,17 @@ std::string Contact::displayColumn(const std::string &str) const
 /* display the full info of a selected contact */
 void    Contact::displayFullInfo()
 {
-    std::cout << "First name: " << firstName << std::endl;
-    std::cout << "Last name: " << lastName << std::endl;
-    std::cout << "Nickname: " << nickName << std::endl;
-    std::cout << "Phone number: " << phoneNumber << std::endl;
-    std::cout << "Darkest secret: " << darkSecret << std::endl;
+    std::cout << "First name: " << getFirstName() << std::endl;
+    std::cout << "Last name: " << getLastName() << std::endl;
+    std::cout << "Nickname: " << getNickName() << std::endl;
+    std::cout << "Phone number: " << getPhoneNumber() << std::endl;
+    std::cout << "Darkest secret: " << getDarkSecret() << std::endl;
+    
+    // std::cout << "First name: " << firstName << std::endl;
+    // std::cout << "Last name: " << lastName << std::endl;
+    // std::cout << "Nickname: " << nickName << std::endl;
+    // std::cout << "Phone number: " << phoneNumber << std::endl;
+    // std::cout << "Darkest secret: " << darkSecret << std::endl;
 }
 
 // utilities
