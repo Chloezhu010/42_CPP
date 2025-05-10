@@ -8,7 +8,8 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # src files
 SRC = Contact.cpp \
-		test_contact.cpp
+		PhoneBook.cpp \
+		main.cpp
 
 # obj files
 OBJ = $(SRC:.cpp=.o)

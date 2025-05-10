@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/10 11:01:16 by chloe             #+#    #+#             */
+/*   Updated: 2025/05/10 16:45:55 by chloe            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 
 // constructor
@@ -102,16 +114,35 @@ std::string Contact::getDarkSecret()
     return (darkSecret);
 }
 
+// display functions
+/* helper function to display col with max 10 char */
+std::string Contact::displayColumn(const std::string &str) const
+{
+    if (str.length() > 10)
+        return str.substr(0, 9) + ".";
+    return (str);        
+}
+
+/* display the full info of a selected contact */
+void    Contact::displayFullInfo()
+{
+    std::cout << "First name: " << firstName << std::endl;
+    std::cout << "Last name: " << lastName << std::endl;
+    std::cout << "Nickname: " << nickName << std::endl;
+    std::cout << "Phone number: " << phoneNumber << std::endl;
+    std::cout << "Darkest secret: " << darkSecret << std::endl;
+}
+
 // utilities
 /* considered empty if all fields are empty */
-bool    Contact::isEmpty()
+bool    Contact::isEmpty() const
 {
     return (firstName.empty() && lastName.empty() && nickName.empty()
         && phoneNumber.empty() && darkSecret.empty());
 }
 
 /* considred complete if no fields are empty */
-bool    Contact::isComplete()
+bool    Contact::isComplete() const
 {
     return (!firstName.empty() && !lastName.empty() && !nickName.empty()
         && !phoneNumber.empty() && !darkSecret.empty());

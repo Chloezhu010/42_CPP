@@ -1,8 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/10 11:01:22 by chloe             #+#    #+#             */
+/*   Updated: 2025/05/10 16:42:19 by chloe            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
 #include <string>
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 
 /* contact class to store individual contact info */
 class Contact
@@ -33,9 +47,13 @@ class Contact
         std::string getPhoneNumber();
         std::string getDarkSecret();
 
+        // display
+        std::string displayColumn(const std::string &str) const;
+        void    displayFullInfo();
+
         // utilities
-        bool    isEmpty();
-        bool    isComplete();
+        bool    isEmpty() const;
+        bool    isComplete() const;
         void    setInitialized(bool value);
         bool    getInitialized();
 };
