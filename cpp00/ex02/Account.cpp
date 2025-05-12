@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:52:42 by chloe             #+#    #+#             */
-/*   Updated: 2025/05/12 10:54:07 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/12 11:27:04 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <ctime>
 #include <iomanip>
+#include <string>
 
 /* init static var */
 int Account::_nbAccounts = 0;
@@ -53,8 +54,17 @@ void Account::displayAccountsInfos()
 }
 
 void Account::_displayTimestamp()
-{
-    std::cout << "[19920104_091532] ";   
+{ 
+    time_t      rawtime;
+    struct tm*  timeinfo;
+    char        buffer[20];
+    
+    /* get current time */
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+    /* format time info: YYYYMMDD_HHMMSS */
+    strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", timeinfo);
+    std::cout << buffer << " ";
 }
 
 /* constructor & destructor */
