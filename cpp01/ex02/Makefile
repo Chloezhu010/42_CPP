@@ -1,5 +1,5 @@
 # executable name
-NAME = BraiiiiiiinnnzzzZ
+NAME = Hi_This_is_brain
 
 # compiler & flags
 CPP = c++
@@ -7,10 +7,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 # src files
-SRC = Zombie.cpp \
-		newZombie.cpp \
-		randomChump.cpp \
-		main.cpp
+SRC = main.cpp
 
 # obj files
 OBJ = $(SRC:.cpp=.o)
