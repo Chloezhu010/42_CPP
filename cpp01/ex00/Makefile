@@ -7,7 +7,10 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 # src files
-SRC = [][]
+SRC = Zombie.cpp \
+		newZombie.cpp \
+		randomChump.cpp \
+		main.cpp
 
 # obj files
 OBJ = $(SRC:.cpp=.o)
