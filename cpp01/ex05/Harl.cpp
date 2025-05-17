@@ -6,11 +6,18 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:59:14 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/17 13:12:09 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/17 13:39:49 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
+
+/* constructor & destructor */
+Harl::Harl()
+{}
+
+Harl::~Harl()
+{}
 
 /* simple output functions */
 void    Harl::debug(void)
@@ -55,5 +62,5 @@ void    Harl::complain(std::string level)
         }
     }
     // if no matching level found
-    std::cout << "Complaining about something insignificant" << std::endl;
+    std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 }
