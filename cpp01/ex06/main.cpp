@@ -5,22 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/17 13:02:10 by chloe             #+#    #+#             */
-/*   Updated: 2025/05/17 13:03:43 by chloe            ###   ########.fr       */
+/*   Created: 2025/05/17 13:13:27 by chloe             #+#    #+#             */
+/*   Updated: 2025/05/17 13:16:56 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main()
+int main(int ac, char **av)
 {
-    Harl harl;
+    if (ac != 2)
+    {
+        std::cout << "Usage: ./harlFiler <level>" << std::endl;
+        return (1);
+    }
     
-    harl.complain("DEBUG");
-    harl.complain("INFO");
-    harl.complain("WARNING");
-    harl.complain("ERROR");
-    harl.complain("alsdjflaskd");
-
-    return (0);
 }

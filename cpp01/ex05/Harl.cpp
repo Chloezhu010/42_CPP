@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:59:14 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/16 16:19:15 by czhu             ###   ########.fr       */
+/*   Updated: 2025/05/17 13:12:09 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,24 @@ void    Harl::error(void)
 /* ptr to output functions based on the level */
 void    Harl::complain(std::string level)
 {
-    
+    // array of level names
+    std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    // array of member function ptrs
+    void    (Harl::*functions[])() = {
+        &Harl::debug,
+        &Harl::info,
+        &Harl::warning,
+        &Harl::error,
+    };
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (level == levels[i])
+        {
+            (this->*functions[i])();
+            return ;
+        }
+    }
+    // if no matching level found
+    std::cout << "Complaining about something insignificant" << std::endl;
 }
