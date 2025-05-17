@@ -24,13 +24,29 @@
     - randomChump: create a zombie on the stack
 
 ### ex01
+- Dynamic memory allocation for creating multiple zommbie objects
+- Function: Zombie* zombieHorde( int N, std::string name )
+    - Create N zombies objects in a single allocation
+    - Give each zombie a specific name
+    - Return a ptr to the 1st zombie
+- Show horde works by having each zombie announce itself
+- Cleanup all allocated memory
 
 ### ex02
+- Intro to ptr vs reference, memory address, string manipulation
 
 ### ex03
+- Intro to ptr to member functions
+- reference to member functions needs to be initialized immediately
+- ptr to member functions doesn't require immediate initialization
 
 ### ex04
+- Intro to file i/o, string manipulation, error handling
 
 ### ex05
+- Intro to ptr to member functions
 
 ### ex06
+- Cmd line arg handling
+- Switch statements with fall-through behavior
+- Message filter based on the level
