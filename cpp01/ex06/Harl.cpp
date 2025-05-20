@@ -6,7 +6,7 @@
 /*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:22:19 by chloe             #+#    #+#             */
-/*   Updated: 2025/05/20 15:38:22 by czhu             ###   ########.fr       */
+/*   Updated: 2025/05/20 17:20:29 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void    Harl::complain(std::string level)
     switch(i)
     {
         case 0:
-                std::cout << "[ DEBUG ]" << std::endl;
+                std::cout << "[ DEBUG ]\n";
                 Harl::debug();
                 // std::cout << "[ INFO ]" << std::endl;
                 // Harl::info();
@@ -72,7 +72,7 @@ void    Harl::complain(std::string level)
                 // Harl::error();
                 // break ;
         case 1:
-                std::cout << "[ INFO ]" << std::endl;
+                std::cout << "[ INFO ]\n";
                 Harl::info();
                 // std::cout << "[ WARNING ]" << std::endl;
                 // Harl::warning();
@@ -80,17 +80,17 @@ void    Harl::complain(std::string level)
                 // Harl::error();
                 // break ;
         case 2:
-                std::cout << "[ WARNING ]" << std::endl;
+                std::cout << "[ WARNING ]\n";
                 Harl::warning();
                 // std::cout << "[ ERROR ]" << std::endl;
                 // Harl::error();
                 // break ;
         case 3:
-                std::cout << "[ ERROR ]" << std::endl;
+                std::cout << "[ ERROR ]\n";
                 Harl::error();
                 break ;
         default:
-                std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+                std::cout << "[ Probably complaining about insignificant problems ]\n";
                 break ;
     }
 }
