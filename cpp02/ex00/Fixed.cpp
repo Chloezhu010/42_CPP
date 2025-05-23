@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:59:02 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/23 11:12:32 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/23 11:58:35 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,14 @@ Fixed::Fixed(const Fixed& other)
     *this = other;
 }
 
-/* overload operator */
+/* overload operator: define how "=" works for the Fixed class
+    - return a reference to the current object
+    - this: a ptr to the current object
+    - &other: address of the source object
+    - check and avoid self-assignment
+    - retrieve other's interal _value using the getter
+    - store the value in this->_value
+*/
 Fixed& Fixed::operator=(const Fixed& other)
 {
     std::cout << "Fixed: Copy assignment operator called" << std::endl;
@@ -44,6 +51,7 @@ Fixed::~Fixed()
 {
     std::cout << "Fixed: Destructor called" << std::endl;
 }
+
 
 /* getter
     - return the raw value of the fixed-point value
