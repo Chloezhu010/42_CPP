@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:59:02 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/23 20:57:34 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/24 17:14:58 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ Fixed Fixed::operator*(const Fixed &other) const
 Fixed Fixed::operator/(const Fixed &other) const
 {
     Fixed   res;
-    res.setRawBits(getRawBits() / other.getRawBits() << _bits);
+    res.setRawBits((getRawBits() << _bits )/ other.getRawBits());
     return (res);
 }
 

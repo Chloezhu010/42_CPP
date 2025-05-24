@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:24:51 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/23 20:58:07 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/24 17:13:18 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main( void ) {
     Fixed a;
-    Fixed const b(Fixed(5.05f) * Fixed(2));
+    Fixed const b(Fixed(5.05f) / Fixed(2));
 
     std::cout << a << std::endl;
     std::cout << ++a << std::endl;
