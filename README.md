@@ -50,3 +50,31 @@
 - Cmd line arg handling
 - Switch statements with fall-through behavior
 - Message filter based on the level
+
+## CPP02
+### ex00
+- Implement a simple fixed-point number class
+    - _value stores the number internally as an int, which is a scaled version of the real number
+        - eg. to store 3.25, multiple by 2^8, so _value = 832
+        - to retrieve the original nbr, float real = _value / 256.0f = 3.25
+    - _bits defines how many bits are used for the fractional part
+        - static: shared by all instances of Fixed
+        - const: cannot be changed
+### ex01
+- Convert between int and float
+
+### ex02
+- Overload +-*/
+- Overload prefix/ postfix ++/--
+
+### ex03
+- Use Binary Space Partitioning (BSP) for point-in-triangle test
+
+## CPP03
+- Inheritance
+    - create a new child class from an existing parent class
+    - inherit all public and protected attributes and methods of the parent
+    - able to override or extend behaviour
+- ex00
+- ex01
+- ex02
