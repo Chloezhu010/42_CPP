@@ -1,5 +1,5 @@
 # executable name
-NAME = ClapTrap_ex00
+NAME = ClapTrap_ex01
 
 # compiler & flags
 CPP = c++
@@ -8,7 +8,8 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # src files
 SRC = main.cpp \
-		ClapTrap.cpp
+		ClapTrap.cpp \
+		ScavTrap.cpp
 
 # obj files
 OBJ = $(SRC:.cpp=.o)
