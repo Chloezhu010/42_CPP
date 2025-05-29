@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/29 14:12:54 by chloe             #+#    #+#             */
-/*   Updated: 2025/05/29 16:37:24 by chloe            ###   ########.fr       */
+/*   Created: 2025/05/29 17:35:46 by chloe             #+#    #+#             */
+/*   Updated: 2025/05/29 20:20:57 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include <iostream>
 
-class ScavTrap : public ClapTrap
+class FragTrap : public ClapTrap
 {
+    private:
+        // Add member variables here
     public:
         /* constructors */
-        ScavTrap();
-        ScavTrap(std::string name);                           
-        ScavTrap(const ScavTrap& other);    
+        FragTrap();
+        FragTrap(std::string name);                          
+        FragTrap(const FragTrap& other);    
         
         /* operator overload */
-        ScavTrap& operator=(const ScavTrap& other); 
+        FragTrap& operator=(const FragTrap& other); 
         
         /* destructor */
-        ~ScavTrap();
-
-        /* member function */
-        void    attack(const std::string& target);
-        void    guardGate();
+        ~FragTrap();
+        
+        /* member functions */
+        void    highFivesGuys(void);
 };
 
 #endif

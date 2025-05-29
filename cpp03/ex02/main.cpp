@@ -6,20 +6,21 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 11:50:33 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/29 20:26:36 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/29 20:26:11 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
     std::cout << "--- Constructors ---\n";
     ClapTrap alice("Alice");
-    ScavTrap bob("Bob");
-    ScavTrap cathy;
-    ScavTrap david = bob;
+    FragTrap bob("Bob");
+    FragTrap cathy;
+    FragTrap david = bob;
     
     std::cout << "\n--- Valid actions ---\n";
     alice.attack("Bob");
@@ -32,7 +33,7 @@ int main()
     bob.beRepaired(1);
     bob.printStatus();
 
-    bob.guardGate();
+    bob.highFivesGuys();
     bob.printStatus();
 
     std::cout << "\n--- Invalid actions ---\n";
@@ -40,9 +41,9 @@ int main()
     bob.printStatus();
     bob.attack("Alice");
     bob.beRepaired(2);
-    bob.guardGate();
+    bob.highFivesGuys();
    
-    for (int i = 0; i < 51; i++)
+    for (int i = 0; i < 101; i++)
     {
         david.attack("Alice");
         david.printStatus();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 11:50:24 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/27 15:48:33 by czhu             ###   ########.fr       */
+/*   Updated: 2025/05/29 14:59:16 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,11 @@ void    ClapTrap::attack(const std::string& target)
         this->_energy_pts--;
     }
     // if hit point = 0, print error msg
-    else if (this->_hit_pts == 0)
+    else if (this->_hit_pts == 0 && this->_energy_pts > 0)
     {
         std::cout << "ClapTrap: " << this->_name
             << " doesn't have enough hit points\n";
+        this->_energy_pts--;
     }
     // if energy point = 0, print error msg
     else if (this->_energy_pts == 0)
