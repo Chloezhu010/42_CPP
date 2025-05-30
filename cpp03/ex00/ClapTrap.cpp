@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 11:50:24 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/29 14:59:16 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/30 11:58:14 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap(): _name("default"), _hit_pts(10), _energy_pts(10), _attack_dmg(0)
 {
     std::cout << "ClapTrap: Default constructor called" << std::endl;
 }
@@ -38,7 +38,10 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
     std::cout << "ClapTrap: Copy assignment operator called" << std::endl;
     if (this != &other) {
-        // Copy member variables
+        this->_name = other._name;
+        this->_hit_pts = other._hit_pts;
+        this->_energy_pts = other._energy_pts;
+        this->_attack_dmg = other._attack_dmg;
     }
     return *this;
 }
@@ -125,7 +128,8 @@ void    ClapTrap::beRepaired(unsigned int amount)
 void    ClapTrap::printStatus() const
 {
     std::cout << "   [DEBUG]: "
-        << "hit points: " << this->_hit_pts
+        << "name: " << this->_name
+        << "; hit points: " << this->_hit_pts
         << "; energy points: " << this->_energy_pts
         << "; attack damage: " << this->_attack_dmg << std::endl;
 }

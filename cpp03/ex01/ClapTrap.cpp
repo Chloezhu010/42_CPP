@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 11:50:24 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/29 14:58:56 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/30 12:09:50 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap(): _name("default"), _hit_pts(10), _energy_pts(10), _attack_dmg(0)
 {
     std::cout << "ClapTrap: Default constructor called" << std::endl;
 }
@@ -128,7 +128,8 @@ void    ClapTrap::beRepaired(unsigned int amount)
 void    ClapTrap::printStatus() const
 {
     std::cout << "   [DEBUG]: "
-        << "hit points: " << this->_hit_pts
+        << "name: " << this->_name
+        << "; hit points: " << this->_hit_pts
         << "; energy points: " << this->_energy_pts
         << "; attack damage: " << this->_attack_dmg << std::endl;
 }

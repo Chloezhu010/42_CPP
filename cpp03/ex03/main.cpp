@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 11:50:33 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/29 22:43:37 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/30 14:29:07 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ int main()
     std::cout << "\n--- Valid actions ---\n";
     bob.whoAmI();
     bob.attack("Alice");
-    bob.printStatus();
+    // bob.printStatus();
     
     bob.takeDamage(2);
-    bob.printStatus();
+    // bob.printStatus();
     
     bob.beRepaired(1);
-    bob.printStatus();
+    // bob.printStatus();
 
     std::cout << "\n--- Invalid actions ---\n";
     bob.takeDamage(100);
-    bob.printStatus();
+    // bob.printStatus();
     bob.attack("Alice");
     bob.beRepaired(2);
     bob.highFivesGuys();
