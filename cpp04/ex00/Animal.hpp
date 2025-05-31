@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:28:59 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/30 16:39:16 by czhu             ###   ########.fr       */
+/*   Updated: 2025/05/31 14:45:14 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,15 @@ class Animal
         Animal& operator=(const Animal& other); 
         
         /* destructor */
-        ~Animal();
+        virtual ~Animal();
         
         /* member functions */
-        void    makeSound();
-};
+        virtual void    makeSound() const;
+        
+        /* getter */
+        std::string    getType() const;
 
-class Dog : public Animal
-{
-    
-};
-
-class Cat : public Animal
-{
-    
+        /* setter */
 };
 
 #endif

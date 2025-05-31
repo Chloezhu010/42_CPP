@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:28:51 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/30 16:40:33 by czhu             ###   ########.fr       */
+/*   Updated: 2025/05/31 14:34:07 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /* default constructor */
 Animal::Animal()
 {
+    this->type = "Animal";
     std::cout << "Animal: Default constructor called" << std::endl;
 }
 
@@ -42,7 +43,13 @@ Animal::~Animal()
 }
 
 /* member functions */
-void    Animal::makeSound()
+void    Animal::makeSound() const
 {
-    std::cout << this->type << " makes a sound\n";
+    std::cout << this->type << " makes a sound!🔊\n";
+}
+
+/* getter */
+std::string    Animal::getType() const
+{
+    return (this->type);
 }

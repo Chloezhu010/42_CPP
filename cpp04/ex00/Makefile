@@ -8,7 +8,9 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # src files
 SRC = main.cpp \
-		Animal.cpp
+		Animal.cpp \
+		Dog.cpp \
+		Cat.cpp
 
 # obj files
 OBJ = $(SRC:.cpp=.o)
