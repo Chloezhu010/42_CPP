@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:28:51 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/31 14:34:07 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/31 14:55:26 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Animal& Animal::operator=(const Animal& other)
 {
     std::cout << "Animal: Copy assignment operator called" << std::endl;
     if (this != &other) {
-        // Copy member variables
+        this->type = other.getType();
     }
     return *this;
 }

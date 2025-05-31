@@ -23,7 +23,13 @@ class ${CLASS_NAME}
         ${CLASS_NAME}& operator=(const ${CLASS_NAME}& other); 
         
         /* destructor */
-        ~${CLASS_NAME}();                            
+        ~${CLASS_NAME}();
+
+        /* member functions */
+
+        /* getter */
+
+        /* setter */                        
 };
 
 #endif
@@ -61,6 +67,13 @@ ${CLASS_NAME}::~${CLASS_NAME}()
 {
     std::cout << "${CLASS_NAME}: Destructor called" << std::endl;
 }
+
+/* member functions */
+
+/* getter */
+
+/* setter */  
+
 EOF
 
 echo "Created ${CLASS_NAME}.hpp and ${CLASS_NAME}.cpp"

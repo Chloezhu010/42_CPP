@@ -6,13 +6,15 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:29:04 by czhu              #+#    #+#             */
-/*   Updated: 2025/05/31 14:43:47 by chloe            ###   ########.fr       */
+/*   Updated: 2025/05/31 15:07:01 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {
@@ -35,6 +37,22 @@ int main()
     delete meta;
     delete i;
     delete j;
+
+    // std::cout << "---Constructors WrongAnimal WrongCat---\n";
+    // const WrongAnimal* meta2 = new WrongAnimal();
+    // const WrongAnimal* i2 = new WrongCat();
+
+    // std::cout << "\n---Get type WrongAnimal WrongCat---\n";
+    // std::cout << meta2->getType() << " " << std::endl;
+    // std::cout << i2->getType() << " " << std::endl;
+
+    // std::cout << "\n---Make sound WrongAnimal WrongCat---\n";
+    // i2->makeSound();
+    // meta2->makeSound();
+
+    // std::cout << "\n---Destructors---\n";
+    // delete meta2;
+    // delete i2;
 
     return 0;
 }
