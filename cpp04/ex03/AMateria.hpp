@@ -6,10 +6,11 @@
 
 class AMateria
 {
-    private:
-        // Add member variables here
+    protected:
+        std::string _type;
     public:
         /* constructors */
+        AMateria();
         AMateria(std::string const & type);                              
         AMateria(const AMateria& other);    
         
@@ -17,11 +18,11 @@ class AMateria
         AMateria& operator=(const AMateria& other); 
         
         /* destructor */
-        ~AMateria();
+        virtual ~AMateria();
 
         /* member functions */
-        virtual AMateria* clone() const = 0;
-        virtual void use(ICharacter& target);
+        virtual AMateria* clone() const = 0; // pure virtual, make this class abstract
+        virtual void use(ICharacter& target); // display effects
 
         /* getter */
         std::string const & getType() const; // return the materia type

@@ -1,7 +1,7 @@
 #ifndef IMATERIASOURCE_HPP
 #define IMATERIASOURCE_HPP
 
-#include "AMasteria.hpp"
+#include "AMateria.hpp"
 #include <iostream>
 
 class IMateriaSource
