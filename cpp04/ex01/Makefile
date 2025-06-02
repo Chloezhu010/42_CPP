@@ -1,5 +1,5 @@
 # executable name
-NAME = Animal_ex00
+NAME = Animal_ex01
 
 # compiler & flags
 CPP = c++
