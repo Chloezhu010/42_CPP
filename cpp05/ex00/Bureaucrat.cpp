@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 11:33:06 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/06 16:25:18 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/06 16:32:41 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
     {
         this->setGrade(grade);
     }
-    catch (Bureaucrat::GradeTooHighException& e)
+    catch (GradeTooHighException& e)
     {
         std::cerr << "Error: " << e.what();
     }
-    catch (Bureaucrat::GradeTooLowException& e)
+    catch (GradeTooLowException& e)
     {
         std::cerr << "Error: " << e.what();
     }
@@ -74,11 +74,11 @@ void Bureaucrat::incrementGrade()
         int grade = getGrade();
         this->setGrade(grade - 1);
     }
-    catch (Bureaucrat::GradeTooHighException& e)
+    catch (GradeTooHighException& e)
     {
         std::cerr << "Error: " << e.what();
     }
-    catch (Bureaucrat::GradeTooLowException& e)
+    catch (GradeTooLowException& e)
     {
         std::cerr << "Error: " << e.what();
     }
@@ -92,11 +92,11 @@ void Bureaucrat::decrementGrade()
         int grade = getGrade();
         this->setGrade(grade + 1);
     }
-    catch (Bureaucrat::GradeTooHighException& e)
+    catch (GradeTooHighException& e)
     {
         std::cerr << "Error: " << e.what();
     }
-    catch (Bureaucrat::GradeTooLowException& e)
+    catch (GradeTooLowException& e)
     {
         std::cerr << "Error: " << e.what();
     }
