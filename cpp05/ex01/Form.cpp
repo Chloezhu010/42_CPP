@@ -88,4 +88,4 @@ std::ostream    &operator<<(std::ostream &out, const Form& form)
 //                 << "; Sign grade: " << this->getGradeToSign()
 //                 << "; Exec grade: " << this->getGradeToExec()
 //                 << std::endl;
-}
+// }

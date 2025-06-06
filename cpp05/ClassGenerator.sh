@@ -16,11 +16,11 @@ class ${CLASS_NAME}
         // Add member variables here
     public:
         /* constructors */
-        ${CLASS_NAME}();                              
-        ${CLASS_NAME}(const ${CLASS_NAME}& other);    
+        ${CLASS_NAME}();                            
+        ${CLASS_NAME}(const ${CLASS_NAME}& other);
         
         /* operator overload */
-        ${CLASS_NAME}& operator=(const ${CLASS_NAME}& other); 
+        ${CLASS_NAME}& operator=(const ${CLASS_NAME}& other);
         
         /* destructor */
         ~${CLASS_NAME}();
@@ -29,7 +29,7 @@ class ${CLASS_NAME}
 
         /* getter */
 
-        /* setter */                        
+        /* setter */
 };
 
 #endif

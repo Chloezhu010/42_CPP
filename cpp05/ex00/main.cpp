@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:26:28 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/06 16:26:34 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/06 22:39:56 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,8 @@ int main()
     /* Case 2: use try/catch */
     try{
         A.setGrade(151);
-    } catch (Bureaucrat::GradeTooHighException& e)
-    {
-        std::cerr << "Error: " << e.what();
-    }
-    catch (Bureaucrat::GradeTooLowException& e)
+    } 
+    catch(std::exception& e)
     {
         std::cerr << "Error: " << e.what();
     }
@@ -57,11 +54,8 @@ int main()
 
     try{
         B.setGrade(-1);
-    } catch (Bureaucrat::GradeTooHighException& e)
-    {
-        std::cerr << "Error: " << e.what();
     }
-    catch (Bureaucrat::GradeTooLowException& e)
+    catch(std::exception& e)
     {
         std::cerr << "Error: " << e.what();
     }
