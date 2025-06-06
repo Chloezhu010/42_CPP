@@ -8,6 +8,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # src files
 SRC = main.cpp \
+		Bureaucrat.cpp
 
 # obj files
 OBJ = $(SRC:.cpp=.o)
