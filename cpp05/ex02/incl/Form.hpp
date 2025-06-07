@@ -6,7 +6,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
     private:
         const std::string   _name;
@@ -15,18 +15,20 @@ class Form
         const int           _gradeToExec;
     public:
         /* constructors */
-        Form();
-        Form(std::string name, int gradeToSign, int gradeToExec);                
-        Form(const Form& other);
+        AForm();
+        AForm(std::string name, int gradeToSign, int gradeToExec);                
+        AForm(const AForm& other);
         
         /* operator overload */
-        Form& operator=(const Form& other);
+        AForm& operator=(const AForm& other);
         
         /* destructor */
-        ~Form();
+        ~AForm();
 
         /* member functions */
         void    beSign(Bureaucrat& signer);
+        virtual void    execute(Bureaucrat const& executor);
+        virtual void    executeAction() = 0;
 
         /* getter */
         std::string getName() const;
@@ -41,22 +43,29 @@ class Form
         {
             public:
                 const char* what() const throw() {
-                    return "Form: Grade is too high\n";
+                    return "AForm: Grade is too high\n";
                 }
         };
         class GradeTooLowException : public std::exception
         {
             public:
                 const char* what() const throw() {
-                    return "Form: Grade is too low\n";
+                    return "AForm: Grade is too low\n";
+                }
+        };
+        class NoSignException : public std::exception
+        {
+            public:
+                const char* what() const throw() {
+                    return "AForm: Form not signed\n";
                 }
         };
 
-        /* debug */
-        void    printInfo();
+        // /* debug */
+        // void    printInfo();
 };
 
 /* overload << operator */
-std::ostream    &operator<<(std::ostream &out, const Form& form);
+std::ostream    &operator<<(std::ostream &out, const AForm& form);
 
 #endif

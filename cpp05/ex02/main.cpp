@@ -6,12 +6,12 @@
 /*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:26:28 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/07 11:46:24 by czhu             ###   ########.fr       */
+/*   Updated: 2025/06/07 11:58:04 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "./incl/Bureaucrat.hpp"
+#include "./incl/Form.hpp"
 
 int main()
 {

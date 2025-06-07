@@ -6,7 +6,7 @@
 /*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 11:33:00 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/07 11:45:42 by czhu             ###   ########.fr       */
+/*   Updated: 2025/06/07 12:19:39 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ class Bureaucrat
         /* member functions */
         void incrementGrade();
         void decrementGrade();
-        void signForm(Form& form); // call Form::beSign() to attempt to sign the form
-
+        void signForm(AForm& form); // call AForm::beSign() to attempt to sign the form
+        void executeForm(AForm const& form); // attempt to execute the form
+        
         /* getter */
         std::string getName() const;
         int         getGrade() const;
