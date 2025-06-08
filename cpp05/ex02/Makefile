@@ -1,5 +1,5 @@
 # executable name
-NAME = ex01
+NAME = ex02
 
 # compiler & flags
 CPP = c++
@@ -7,9 +7,13 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 # src files
+SRC_DIR = src
 SRC = main.cpp \
-		Bureaucrat.cpp \
-		Form.cpp
+		$(SRC_DIR)/Bureaucrat.cpp \
+		$(SRC_DIR)/Form.cpp \
+		$(SRC_DIR)/ShrubberyCreationForm.cpp \
+		$(SRC_DIR)/RobotomyRequestForm.cpp \
+		$(SRC_DIR)/PresidentialPardonForm.cpp
 
 # obj files
 OBJ = $(SRC:.cpp=.o)
@@ -18,7 +22,7 @@ OBJ = $(SRC:.cpp=.o)
 # rules
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ)
 	$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp

@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <exception>
+#include <fstream> // for std::ofsttream
+#include <cstdlib> // for rand(), srand()
+#include <ctime> // for time()
 
 class Bureaucrat;
 
@@ -27,8 +30,8 @@ class AForm
 
         /* member functions */
         void    beSign(Bureaucrat& signer);
-        virtual void    execute(Bureaucrat const& executor);
-        virtual void    executeAction() = 0;
+        virtual void    execute(Bureaucrat const& executor) const;
+        virtual void    executeAction() const = 0; // will be overrided by concrete classes
 
         /* getter */
         std::string getName() const;

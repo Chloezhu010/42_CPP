@@ -1,5 +1,5 @@
-#include "./incl/Form.hpp"
-#include "./incl/Bureaucrat.hpp"
+#include "../incl/Form.hpp"
+#include "../incl/Bureaucrat.hpp"
 
 /* default constructor */
 AForm::AForm(): _name("default"), _sign(false), _gradeToSign(150), _gradeToExec(150)
@@ -52,7 +52,7 @@ void    AForm::beSign(Bureaucrat& signer)
     - grade of the bureaucrat is high enough to execute the form
     - otherwise through an exception
 */
-void    AForm::execute(Bureaucrat const& executor)
+void    AForm::execute(Bureaucrat const& executor) const
 {
     if (this->getSign() == false)
         throw NoSignException();
@@ -87,10 +87,10 @@ int         AForm::getGradeToExec() const
 /* operator << overload */
 std::ostream    &operator<<(std::ostream &out, const AForm& form)
 {
-    out << "Form name: " << form.getName()
-        << "; Sign status: " << form.getSign()
-        << "; Grade to sign: " << form.getGradeToSign()
-        << "; Grade to execute: " << form.getGradeToExec();
+    out << "Form: " << form.getName()
+        << "\n\tSign status: " << form.getSign()
+        << "\n\tGrade to sign: " << form.getGradeToSign()
+        << "\n\tGrade to execute: " << form.getGradeToExec();
     return (out);
 }
 

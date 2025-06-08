@@ -7,7 +7,7 @@
 class ShrubberyCreationForm : public AForm
 {
     private:
-        // Add member variables here
+        const std::string _target;
     public:
         /* constructors */
         ShrubberyCreationForm();
@@ -21,8 +21,10 @@ class ShrubberyCreationForm : public AForm
         ~ShrubberyCreationForm();
 
         /* member functions */
+        void    executeAction() const;
 
         /* getter */
+        std::string    getName() const;
 
         /* setter */
 };

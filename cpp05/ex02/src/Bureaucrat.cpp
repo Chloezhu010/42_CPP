@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 11:33:06 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/07 12:21:38 by czhu             ###   ########.fr       */
+/*   Updated: 2025/06/08 12:33:57 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./incl/Bureaucrat.hpp"
+#include "../incl/Bureaucrat.hpp"
 
 /* default constructor */
 Bureaucrat::Bureaucrat(): _name("default"), _grade(150)
@@ -123,7 +123,15 @@ void Bureaucrat::signForm(AForm& form)
 */
 void Bureaucrat::executeForm(AForm const& form)
 {
-
+    try {
+        form.execute(*this);
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
+    }
+    catch (std::exception& e)
+    {
+        std::cout << this->getName() << " cannot executed " << form.getName()
+                    << " because " << e.what() << std::endl;
+    }
 }
 
 /* getter */
