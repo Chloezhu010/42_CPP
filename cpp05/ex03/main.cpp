@@ -6,7 +6,7 @@
 /*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:26:28 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/09 14:06:36 by czhu             ###   ########.fr       */
+/*   Updated: 2025/06/09 16:25:16 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,46 @@ int main()
     
     std::cout << "\n----Test rrf----\n";
     rrf = randomIntern.makeForm("robotomy request", "Bender");
-    try {
-        rrf->beSigned(A);
-    } catch (std::exception& e) {
-        std::cout << e.what();
+    if (rrf)
+    {
+        try {
+            rrf->beSigned(A);
+        } catch (std::exception& e) {
+            std::cout << e.what();
+        }
+        A.executeForm(*rrf);
     }
-    A.executeForm(*rrf);
+    else
+        std::cout << "Error\n";
+    
 
     std::cout << "\n----Test scf----\n";
     scf = randomIntern.makeForm("shrubbery creation", "Tree");
-    try {
-        scf->beSigned(A);
-    } catch (std::exception& e) {
-        std::cout << e.what();
+    if (scf)
+    {
+        try {
+            scf->beSigned(A);
+        } catch (std::exception& e) {
+            std::cout << e.what();
+        }
+        A.executeForm(*scf);
     }
-    A.executeForm(*scf);
+    else
+        std::cout << "Error\n";
 
     std::cout << "\n----Test ppf----\n";
     ppf = randomIntern.makeForm("presidential pardon", "Pardon");
-    try {
-        ppf->beSigned(A);
-    } catch (std::exception& e) {
-        std::cout << e.what();
+    if (ppf)
+    {
+        try {
+            ppf->beSigned(A);
+        } catch (std::exception& e) {
+            std::cout << e.what();
+        }
+        A.executeForm(*ppf);
     }
-    A.executeForm(*ppf);
+    else
+        std::cout << "Error\n";
 
     std::cout << "\n----Test random----\n";
     random = randomIntern.makeForm("random", "laskjdlfk");
