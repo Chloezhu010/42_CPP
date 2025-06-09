@@ -26,7 +26,7 @@ class Form
         ~Form();
 
         /* member functions */
-        void    beSign(Bureaucrat& signer);
+        void    beSigned(Bureaucrat& signer);
 
         /* getter */
         std::string getName() const;

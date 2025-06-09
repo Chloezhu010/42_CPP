@@ -39,7 +39,7 @@ AForm::~AForm()
 }
 
 /* member functions */
-void    AForm::beSign(Bureaucrat& signer)
+void    AForm::beSigned(Bureaucrat& signer)
 {
     if (signer.getGrade() <= this->getGradeToSign())
         this->_sign = true;

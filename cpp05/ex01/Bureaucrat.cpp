@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 11:33:06 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/06 21:48:08 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/09 12:40:08 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void Bureaucrat::decrementGrade()
 void Bureaucrat::signForm(Form& form)
 {
     try {
-        form.beSign(*this);
+        form.beSigned(*this);
     }
     catch (std::exception& e)
     {

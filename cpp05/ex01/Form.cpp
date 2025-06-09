@@ -39,7 +39,7 @@ Form::~Form()
 }
 
 /* member functions */
-void    Form::beSign(Bureaucrat& signer)
+void    Form::beSigned(Bureaucrat& signer)
 {
     if (signer.getGrade() <= this->getGradeToSign())
         this->_sign = true;

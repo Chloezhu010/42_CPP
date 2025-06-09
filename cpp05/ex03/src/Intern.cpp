@@ -17,8 +17,8 @@ Intern::Intern(const Intern& other)
 Intern& Intern::operator=(const Intern& other)
 {
     std::cout << "Intern: Copy assignment operator called" << std::endl;
-    if (this != &other) {
-        // Copy member variables
+    if (this == &other) {
+        return *this;
     }
     return *this;
 }

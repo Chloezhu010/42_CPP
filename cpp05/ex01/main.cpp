@@ -6,7 +6,7 @@
 /*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:26:28 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/07 11:46:24 by czhu             ###   ########.fr       */
+/*   Updated: 2025/06/09 12:37:06 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main()
     
     std::cout << "\n----Check sign status----\n";
     try {
-        form->beSign(A);
+        form->beSigned(A);
     }
     catch (std::exception& e)
     {

@@ -29,7 +29,7 @@ class AForm
         ~AForm();
 
         /* member functions */
-        void    beSign(Bureaucrat& signer);
+        void    beSigned(Bureaucrat& signer);
         virtual void    execute(Bureaucrat const& executor) const;
         virtual void    executeAction() const = 0; // will be overrided by concrete classes
 
