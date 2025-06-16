@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:10:13 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/16 22:52:31 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/16 23:23:54 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void        convertFromInt(std::string& input)
 void        convertFromFloat(std::string& input)
 {
     float f = std::stof(input);
+    bool isWholeFloat = (f == std::floor(f));
     char c = static_cast<char>(f);
 
     /* char output */
@@ -106,14 +107,21 @@ void        convertFromFloat(std::string& input)
     else
         std::cout << "int: impossible\n";
     /* float output */
-    std::cout << "float: " << static_cast<float>(f)  << ".0f" << std::endl;
+    if (isWholeFloat)
+        std::cout << "float: " << static_cast<float>(f)  << ".0f" << std::endl;
+    else
+        std::cout << "float: " << static_cast<float>(f)  << "f" << std::endl;
     /* double output */
-    std::cout << "double: " << static_cast<double>(f) << ".0" << std::endl;
+    if (isWholeFloat)
+        std::cout << "double: " << static_cast<double>(f) << ".0" << std::endl;
+    else
+        std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
 
 void        convertFromDouble(std::string& input)
 {
     double d = std::stod(input);
+    bool isWholeDouble = (d == std::floor(d));
     char c = static_cast<char>(d);
 
     /* char output */
@@ -133,11 +141,19 @@ void        convertFromDouble(std::string& input)
         std::cout << "int: impossible\n";
     /* float output */
     if (d >= -FLT_MAX && d <= FLT_MAX)
-        std::cout << "float: " << static_cast<float>(d)  << ".0f" << std::endl;
+    {
+        if (isWholeDouble)
+            std::cout << "float: " << static_cast<float>(d)  << ".0f" << std::endl;
+        else
+            std::cout << "float: " << static_cast<float>(d)  << "f" << std::endl;
+    }
     else
         std::cout << "float: impossible\n";
     /* double output */
-    std::cout << "double: " << static_cast<double>(d) << ".0" << std::endl;
+    if (isWholeDouble)
+        std::cout << "double: " << static_cast<double>(d) << ".0" << std::endl;
+    else
+        std::cout << "double: " << static_cast<double>(d) << std::endl;
 }
 
 void        convertFromPseudoF(std::string& input)
