@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 13:29:35 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/16 21:19:28 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/16 22:06:16 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void        convertFromChar(std::string& input);
 void        convertFromInt(std::string& input);
 void        convertFromFloat(std::string& input);
 void        convertFromDouble(std::string& input);
-void        convertFromPseudoF();
-void        convertFromPseudoD();
+void        convertFromPseudoF(std::string& input);
+void        convertFromPseudoD(std::string& input);
 
 #endif

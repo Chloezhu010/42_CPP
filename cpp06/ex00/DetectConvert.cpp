@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:10:13 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/16 21:19:19 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/16 22:52:31 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,62 +63,95 @@ void        convertFromChar(std::string& input)
 }
 
 void        convertFromInt(std::string& input)
-{   
-    int value = std::stoi(input);
-    char c = static_cast<char>(value);
+{
+    int i = std::stoi(input);
+    char c = static_cast<char>(i);
 
-    if (isprint(c))
-        std::cout << "char: " << "'" << c << "'" << std::endl;
+    /* char output */
+    if (c >= 0 && c <= 127)
+    {
+        if (isprint(c))
+            std::cout << "char: " << "'" << c << "'" << std::endl;
+        else
+            std::cout << "char: " << "Non displayable\n";
+    }
     else
-        std::cout << "char: " << "Non displayable\n";
-    std::cout << "int: " << static_cast<int>(value) << std::endl;
-    std::cout << "float: " << std::fixed << std::setprecision(1) 
-                            << static_cast<float>(value)  << "f" << std::endl;
-    std::cout << "double: " << static_cast<double>(value) << std::endl;
+        std::cout << "char: impossible\n";
+    /* int output */
+    std::cout << "int: " << static_cast<int>(i) << std::endl;
+    /* float output */
+    std::cout << "float: " << static_cast<float>(i)  << ".0f" << std::endl;
+    /* double output */
+    std::cout << "double: " << static_cast<double>(i) << ".0" << std::endl;
 }
 
 void        convertFromFloat(std::string& input)
 {
-    float value = std::stof(input);
-    char c = static_cast<char>(value);
+    float f = std::stof(input);
+    char c = static_cast<char>(f);
 
-    if (isprint(c))
-        std::cout << "char: " << "'" << c << "'" << std::endl;
+    /* char output */
+    if (c >= 0 && c <= 127)
+    {
+        if (isprint(c))
+            std::cout << "char: " << "'" << c << "'" << std::endl;
+        else
+            std::cout << "char: " << "Non displayable\n";
+    }
     else
-        std::cout << "char: " << "Non displayable\n";
-    std::cout << "int: " << static_cast<int>(value) << std::endl;
-    std::cout << "float: " << std::setprecision(12) 
-                            << static_cast<float>(value)  << "f" << std::endl;
-    std::cout << "double: " << static_cast<double>(value) << std::endl;
+        std::cout << "char: impossible\n";
+    /* int output */
+    if (f >= INT_MIN && f <= INT_MAX)
+        std::cout << "int: " << static_cast<int>(f) << std::endl;
+    else
+        std::cout << "int: impossible\n";
+    /* float output */
+    std::cout << "float: " << static_cast<float>(f)  << ".0f" << std::endl;
+    /* double output */
+    std::cout << "double: " << static_cast<double>(f) << ".0" << std::endl;
 }
 
 void        convertFromDouble(std::string& input)
 {
-    double value = std::stod(input);
-    char c = static_cast<char>(value);
+    double d = std::stod(input);
+    char c = static_cast<char>(d);
 
-    if (isprint(c))
-        std::cout << "char: " << "'" << c << "'" << std::endl;
+    /* char output */
+    if (c >= 0 && c <= 127)
+    {
+        if (isprint(c))
+            std::cout << "char: " << "'" << c << "'" << std::endl;
+        else
+            std::cout << "char: " << "Non displayable\n";
+    }
     else
-        std::cout << "char: " << "Non displayable\n";
-    std::cout << "int: " << static_cast<int>(value) << std::endl;
-    std::cout << "float: " << std::setprecision(12) 
-                            << static_cast<float>(value)  << "f" << std::endl;
-    std::cout << "double: " << static_cast<double>(value) << std::endl;
+        std::cout << "char: impossible\n";
+    /* int output */
+    if (d >= INT_MIN && d <= INT_MAX)
+        std::cout << "int: " << static_cast<int>(d) << std::endl;
+    else
+        std::cout << "int: impossible\n";
+    /* float output */
+    if (d >= -FLT_MAX && d <= FLT_MAX)
+        std::cout << "float: " << static_cast<float>(d)  << ".0f" << std::endl;
+    else
+        std::cout << "float: impossible\n";
+    /* double output */
+    std::cout << "double: " << static_cast<double>(d) << ".0" << std::endl;
 }
 
-void        convertFromPseudoF()
+void        convertFromPseudoF(std::string& input)
 {
     std::cout << "char: impossible\n";
     std::cout << "int: impossible\n";
-    std::cout << "float: nanf\n";
-    std::cout << "double: nan\n";
+    std::cout << "float: " << input << std::endl;
+    std::cout << "double: " << input.substr(0, input.length() - 1) << std::endl;
 }
 
-void        convertFromPseudoD()
+void        convertFromPseudoD(std::string& input)
 {
     std::cout << "char: impossible\n";
     std::cout << "int: impossible\n";
-    std::cout << "float: nanf\n";
-    std::cout << "double: nan\n";
+    std::cout << "float: " << input << "f" << std::endl;
+    std::cout << "double: " << input << std::endl;
 }
