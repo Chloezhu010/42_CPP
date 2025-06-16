@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 13:29:35 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/16 15:39:45 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/16 21:19:28 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@
 #include <string>
 #include <cmath>
 #include <iomanip>
+#include <cfloat>
+#include <climits>
 
 enum LiteralType {
-    TYPE_CHAR,
-    TYPE_INT,
-    TYPE_FLOAT,
-    TYPE_DOUBLE,
-    TYPE_PSEUDO_F,
-    TYPE_PSEUDO_D,
-    TYPE_INVALID,
+    TYPE_CHAR = 0,
+    TYPE_INT = 1,
+    TYPE_FLOAT = 2,
+    TYPE_DOUBLE = 3,
+    TYPE_PSEUDO_F = 4,
+    TYPE_PSEUDO_D = 5,
+    TYPE_INVALID = 6,
 };
 
 class ScalarConverter
 {
     private:
-        
-    public:
         /* constructors */
         ScalarConverter();                         
         ScalarConverter(const ScalarConverter& other);
@@ -42,14 +42,16 @@ class ScalarConverter
         
         /* destructor */
         virtual ~ScalarConverter() = 0; // pure virtual function
-
-        /* member functions */
-        static void convert(std::string input);
-
-        /* getters */
-
+    public:
+        static void convert(std::string& input);
 };
 
 LiteralType detectType(const std::string& input);
+void        convertFromChar(std::string& input);
+void        convertFromInt(std::string& input);
+void        convertFromFloat(std::string& input);
+void        convertFromDouble(std::string& input);
+void        convertFromPseudoF();
+void        convertFromPseudoD();
 
 #endif

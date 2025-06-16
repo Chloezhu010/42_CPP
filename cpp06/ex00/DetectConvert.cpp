@@ -1,0 +1,124 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   DetectConvert.cpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/16 15:10:13 by chloe             #+#    #+#             */
+/*   Updated: 2025/06/16 21:19:19 by chloe            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ScalarConverter.hpp"
+
+LiteralType detectType(const std::string& input)
+{
+    /* pseudo: nan, nanf, +-inff, +-inf */
+    if (input == "nanf" || input == "+inff" || input == "-inff" || input == "inff")
+        return (TYPE_PSEUDO_F);
+    if (input == "nan" || input == "+inf" || input == "-inf" || input == "inf")
+        return (TYPE_PSEUDO_D);
+    /* single printable non-digit char */
+    if (input.length() == 1 && std::isprint(input[0]) && !std::isdigit(input[0]))
+        return (TYPE_CHAR);
+    /* float, double, int */
+    try {
+        /* check for float */
+        if (input.back() == 'f')
+        {
+            std::size_t pos;
+            std::stof(input, &pos);
+            if (pos == input.length() - 1)
+                return (TYPE_FLOAT);
+            return (TYPE_INVALID);
+        }
+        /* check for double, int */
+        std::size_t pos;
+        double      d = std::stod(input, &pos);
+        if (pos != input.length())
+            throw (std::invalid_argument("Invalid"));
+        /* check for int */
+        if (input.find('.') == std::string::npos && input.back() != 'f')
+        {
+            /* check int range */
+            if (d >= INT_MIN && d <= INT_MAX)
+                return (TYPE_INT);
+        }
+        
+        return (TYPE_DOUBLE);
+    } catch (std::exception& e)
+    {
+        return (TYPE_INVALID);
+    }
+}
+
+void        convertFromChar(std::string& input)
+{    
+    std::cout << "char: " << "'" << input << "'" << std::endl;
+    std::cout << "int: " << static_cast<int>(input[0]) << std::endl;
+    std::cout << "float: " << std::fixed << std::setprecision(1) 
+                            << static_cast<float>(input[0])  << "f" << std::endl;
+    std::cout << "double: " << static_cast<double>(input[0]) << std::endl;
+}
+
+void        convertFromInt(std::string& input)
+{   
+    int value = std::stoi(input);
+    char c = static_cast<char>(value);
+
+    if (isprint(c))
+        std::cout << "char: " << "'" << c << "'" << std::endl;
+    else
+        std::cout << "char: " << "Non displayable\n";
+    std::cout << "int: " << static_cast<int>(value) << std::endl;
+    std::cout << "float: " << std::fixed << std::setprecision(1) 
+                            << static_cast<float>(value)  << "f" << std::endl;
+    std::cout << "double: " << static_cast<double>(value) << std::endl;
+}
+
+void        convertFromFloat(std::string& input)
+{
+    float value = std::stof(input);
+    char c = static_cast<char>(value);
+
+    if (isprint(c))
+        std::cout << "char: " << "'" << c << "'" << std::endl;
+    else
+        std::cout << "char: " << "Non displayable\n";
+    std::cout << "int: " << static_cast<int>(value) << std::endl;
+    std::cout << "float: " << std::setprecision(12) 
+                            << static_cast<float>(value)  << "f" << std::endl;
+    std::cout << "double: " << static_cast<double>(value) << std::endl;
+}
+
+void        convertFromDouble(std::string& input)
+{
+    double value = std::stod(input);
+    char c = static_cast<char>(value);
+
+    if (isprint(c))
+        std::cout << "char: " << "'" << c << "'" << std::endl;
+    else
+        std::cout << "char: " << "Non displayable\n";
+    std::cout << "int: " << static_cast<int>(value) << std::endl;
+    std::cout << "float: " << std::setprecision(12) 
+                            << static_cast<float>(value)  << "f" << std::endl;
+    std::cout << "double: " << static_cast<double>(value) << std::endl;
+}
+
+void        convertFromPseudoF()
+{
+    std::cout << "char: impossible\n";
+    std::cout << "int: impossible\n";
+    std::cout << "float: nanf\n";
+    std::cout << "double: nan\n";
+}
+
+void        convertFromPseudoD()
+{
+    std::cout << "char: impossible\n";
+    std::cout << "int: impossible\n";
+    std::cout << "float: nanf\n";
+    std::cout << "double: nan\n";
+}

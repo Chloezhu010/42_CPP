@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 13:29:40 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/15 17:49:08 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/16 21:19:36 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,34 @@ ScalarConverter::~ScalarConverter()
 }
 
 /* member functions */
-
-
-
+void ScalarConverter::convert(std::string& input)
+{
+    int inputType = detectType(input);
+    std::cout << "[DEBUG]: input type: " << inputType << std::endl; // debug
+    
+    /* switch between type */
+    switch (inputType)
+    {
+        case TYPE_CHAR:
+            convertFromChar(input);
+            break ;
+        case TYPE_INT:
+            convertFromInt(input);
+            break ;
+        // case TYPE_FLOAT:
+        //     convertFromFloat(input);
+        //     break ;
+        // case TYPE_DOUBLE:
+        //     convertFromDouble(input);
+        //     break ;
+        case TYPE_PSEUDO_F:
+            convertFromPseudoF();
+            break ;
+        case TYPE_PSEUDO_D:
+            convertFromPseudoD();
+            break ;
+        default:
+            std::cout << "Error: Impossible to print or input not convertable\n";
+            break ;
+    }
+}
