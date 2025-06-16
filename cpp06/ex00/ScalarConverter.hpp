@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 13:29:35 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/15 23:14:37 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/16 15:39:45 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@
 #include <string>
 #include <cmath>
 #include <iomanip>
+
+enum LiteralType {
+    TYPE_CHAR,
+    TYPE_INT,
+    TYPE_FLOAT,
+    TYPE_DOUBLE,
+    TYPE_PSEUDO_F,
+    TYPE_PSEUDO_D,
+    TYPE_INVALID,
+};
 
 class ScalarConverter
 {
@@ -39,5 +49,7 @@ class ScalarConverter
         /* getters */
 
 };
+
+LiteralType detectType(const std::string& input);
 
 #endif

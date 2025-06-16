@@ -8,7 +8,8 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # src files
 SRC = main.cpp \
-		ScalarConverter.cpp
+		ScalarConverter.cpp \
+		DetectType.cpp
 
 # obj files
 OBJ = $(SRC:.cpp=.o)
