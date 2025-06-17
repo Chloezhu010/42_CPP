@@ -6,7 +6,7 @@
 /*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:10:13 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/17 13:56:58 by czhu             ###   ########.fr       */
+/*   Updated: 2025/06/17 14:07:53 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,10 +155,15 @@ void        convertFromDouble(std::string& input)
     else
         std::cout << "float: impossible\n";
     /* double output */
-    if (isWholeDouble)
-        std::cout << "double: " << static_cast<double>(d) << ".0" << std::endl;
-    else
+    if (d > DBL_MAX || d < DBL_MIN)
         std::cout << "double: " << static_cast<double>(d) << std::endl;
+    else
+    {
+        if (isWholeDouble)
+            std::cout << "double: " << static_cast<double>(d) << ".0" << std::endl;
+        else
+            std::cout << "double: " << static_cast<double>(d) << std::endl;   
+    }
 }
 
 void        convertFromPseudoF(std::string& input)
