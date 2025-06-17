@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:10:33 by czhu              #+#    #+#             */
-/*   Updated: 2025/06/17 16:23:41 by czhu             ###   ########.fr       */
+/*   Updated: 2025/06/17 21:45:19 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 #include <iostream>
 
-// need to be abstract
+typedef struct Data {
+    int         id;
+    std::string name;
+    double       value;
+} Data;
 class Serializer
 {
     private:
@@ -29,15 +33,11 @@ class Serializer
         Serializer& operator=(const Serializer& other);
         
         /* destructor */
-        ~Serializer();
+        virtual ~Serializer() = 0;
 
         /* member functions */
-        static uintptr_t seralize(Data* ptr);
-        static Data* deseralize(uintptr_t raw);
-
-        /* getter */
-
-        /* setter */
+        static uintptr_t serialize(Data* ptr);
+        static Data* deserialize(uintptr_t raw);
 };
 
 #endif

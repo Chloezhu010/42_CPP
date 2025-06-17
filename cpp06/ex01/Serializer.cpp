@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 14:10:48 by czhu              #+#    #+#             */
-/*   Updated: 2025/06/17 14:10:49 by czhu             ###   ########.fr       */
+/*   Updated: 2025/06/17 21:43:09 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ Serializer::Serializer(const Serializer& other)
 Serializer& Serializer::operator=(const Serializer& other)
 {
     std::cout << "Serializer: Copy assignment operator called" << std::endl;
-    if (this != &other) {
-        // Copy member variables
+    if (this == &other) {
+        return *this;
     }
     return *this;
 }
@@ -42,8 +42,13 @@ Serializer::~Serializer()
 }
 
 /* member functions */
+uintptr_t Serializer::serialize(Data* ptr)
+{
+    return (reinterpret_cast<uintptr_t>(ptr));
+}
 
-/* getter */
-
-/* setter */  
+Data* Serializer::deserialize(uintptr_t raw)
+{
+    return (reinterpret_cast<Data*>(raw));
+}
 

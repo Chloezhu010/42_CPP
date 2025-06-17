@@ -1,5 +1,5 @@
 # executable name
-NAME = convert_ex01
+NAME = serializer
 
 # compiler & flags
 CPP = c++
