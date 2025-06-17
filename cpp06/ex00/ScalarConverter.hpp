@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 13:29:35 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/16 22:06:16 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/17 12:20:07 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <cstring>
 #include <string>
 #include <cmath>
 #include <iomanip>

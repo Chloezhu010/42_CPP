@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DetectConvert.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:10:13 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/16 23:23:54 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/17 13:56:58 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,23 @@ LiteralType detectType(const std::string& input)
     /* float, double, int */
     try {
         /* check for float */
-        if (input.back() == 'f')
+        if (input[input.length() - 1] == 'f')
         {
-            std::size_t pos;
-            std::stof(input, &pos);
-            if (pos == input.length() - 1)
-                return (TYPE_FLOAT);
+            const char* str = input.c_str(); // convert const std::string to const char*
+            char* endptr;
+            strtof(str, &endptr);
+            if (endptr == &str[strlen(str) - 1])
+                return (TYPE_FLOAT);           
             return (TYPE_INVALID);
         }
         /* check for double, int */
-        std::size_t pos;
-        double      d = std::stod(input, &pos);
-        if (pos != input.length())
-            throw (std::invalid_argument("Invalid"));
+        const char* str = input.c_str();
+        char* endptr;
+        double d = strtod(str, &endptr);
+        if (endptr != &str[strlen(str)])
+            std::cerr << "Error: Invalid\n";        
         /* check for int */
-        if (input.find('.') == std::string::npos && input.back() != 'f')
+        if (input.find('.') == std::string::npos && input[input.length() - 1] != 'f')
         {
             /* check int range */
             if (d >= INT_MIN && d <= INT_MAX)
@@ -64,19 +66,19 @@ void        convertFromChar(std::string& input)
 
 void        convertFromInt(std::string& input)
 {
-    int i = std::stoi(input);
-    char c = static_cast<char>(i);
-
+    const char* str = input.c_str();
+    int  i = strtol(str, NULL, 10);
     /* char output */
-    if (c >= 0 && c <= 127)
+    if (i < 0 || i > 127)
+        std::cout << "char: impossible\n";
+    else
     {
+        char c = static_cast<char>(i);
         if (isprint(c))
             std::cout << "char: " << "'" << c << "'" << std::endl;
         else
             std::cout << "char: " << "Non displayable\n";
-    }
-    else
-        std::cout << "char: impossible\n";
+    }    
     /* int output */
     std::cout << "int: " << static_cast<int>(i) << std::endl;
     /* float output */
@@ -87,22 +89,24 @@ void        convertFromInt(std::string& input)
 
 void        convertFromFloat(std::string& input)
 {
-    float f = std::stof(input);
+    const char* str = input.c_str();
+    float f = strtof(str, NULL);
     bool isWholeFloat = (f == std::floor(f));
-    char c = static_cast<char>(f);
 
     /* char output */
-    if (c >= 0 && c <= 127)
+    if (f < 0 || f > 127)
+        std::cout << "char: impossible\n";
+    else
     {
+        char c = static_cast<char>(f);
         if (isprint(c))
             std::cout << "char: " << "'" << c << "'" << std::endl;
         else
             std::cout << "char: " << "Non displayable\n";
     }
-    else
-        std::cout << "char: impossible\n";
+        
     /* int output */
-    if (f >= INT_MIN && f <= INT_MAX)
+    if ((int)f >= INT_MIN && (int)f <= INT_MAX)
         std::cout << "int: " << static_cast<int>(f) << std::endl;
     else
         std::cout << "int: impossible\n";
@@ -120,20 +124,21 @@ void        convertFromFloat(std::string& input)
 
 void        convertFromDouble(std::string& input)
 {
-    double d = std::stod(input);
+    const char* str = input.c_str();
+    double d = strtod(str, NULL);
     bool isWholeDouble = (d == std::floor(d));
-    char c = static_cast<char>(d);
 
     /* char output */
-    if (c >= 0 && c <= 127)
+    if (d < 0 || d > 127)
+        std::cout << "char: impossible\n";
+    else
     {
+        char c = static_cast<char>(d);
         if (isprint(c))
             std::cout << "char: " << "'" << c << "'" << std::endl;
         else
             std::cout << "char: " << "Non displayable\n";
     }
-    else
-        std::cout << "char: impossible\n";
     /* int output */
     if (d >= INT_MIN && d <= INT_MAX)
         std::cout << "int: " << static_cast<int>(d) << std::endl;

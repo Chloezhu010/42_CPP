@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 13:29:43 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/16 23:07:53 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/17 13:26:44 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,11 @@ int main(int ac, char **av)
         std::cout << "Error: Need one input\n";
         return (1);
     }
+    /* convert input */
     else
     {
         std::string input = av[1];
         ScalarConverter::convert(input);
-
-        // std::cout << "\nDEBUG\n";
-        // float f = std::stof(input);
-        // bool isWholeFloat = (f == static_cast<int>(f));
-        // if (isWholeFloat)
-        //     std::cout << f << std::endl;
-        // else
-        //     std::cout << "not\n";
     }
+    return (0);
 }
