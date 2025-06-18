@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:32:56 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/18 17:43:40 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/18 17:46:43 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Base*   generate(void)
 {
-    // random number
+    // random seeding
     std::srand(time(0));
     // array of class ptrs
     Base* array[3];
@@ -30,6 +30,7 @@ Base*   generate(void)
         return (array[2]);
 }
 
+/* when casting fails, returns nullptr */
 void    identify(Base* p)
 {
     if (dynamic_cast<A*>(p))
@@ -42,6 +43,7 @@ void    identify(Base* p)
         std::cerr << "Error: Unknown type\n";
 }
 
+/* when casting fails, throw exception */
 void    identify(Base& p)
 {
     try {
