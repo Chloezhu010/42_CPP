@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:08:45 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/19 13:51:57 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/19 16:02:58 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ const T& Array<T>::operator[](unsigned int index) const
 template <typename T>
 Array<T>::~Array()
 {
+    std::cout << "Destructor called\n";
     delete[] _data;
 }
 
