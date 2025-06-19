@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:56:38 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/18 21:37:58 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/18 21:41:47 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,5 @@ int main( void )
     std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
     std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
     
-    // /* self testing */
-    // std::cout << add (2, 3) << std::endl;
-    // std::cout << add (2.4, 3.2) << std::endl;
-
     return 0;
 }

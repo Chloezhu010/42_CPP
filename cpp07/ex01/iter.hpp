@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 21:58:00 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/18 22:42:59 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/18 23:20:40 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,11 @@ void iter(T* array, size_t len, void (*func)(T&))
     {
         func(array[i]);
     }
+}
+
+template <typename T>
+
+void printItem(T& item)
+{
+    std::cout << item << std::endl;
 }

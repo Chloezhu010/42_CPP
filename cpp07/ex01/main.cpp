@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 21:57:44 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/18 22:43:00 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/18 23:24:21 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,19 @@ int main()
     char chars[] = {'a', 'b', 'c', 'd'};
     size_t len = 5;
 
-    /* iter on numbers */
+    std::cout << "iter on numbers\n";
     iter(nums, 5, increment);
     for (size_t i = 0; i < len; i++)
         std::cout << nums[i] << " ";
-    /* iter on strings */
+    
+    std::cout << "\niter on chars\n";
     iter(chars, len, ft_toupper);
     for (size_t i = 0; i < len; i++)
         std::cout << chars[i] << " ";
+    
+    std::cout << "\niter using printItem\n";
+    iter(nums, 5, printItem<int>);
+    iter(chars, 5, printItem<char>);
 
     return (0);
 }
