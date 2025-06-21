@@ -1,5 +1,5 @@
 # executable name
-NAME = easyfind
+NAME = span
 
 # compiler & flags
 CPP = c++

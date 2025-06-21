@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:31:12 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/20 17:39:45 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/21 15:54:32 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,21 @@ int main()
     sp.addNumber(17);
     sp.addNumber(9);
     sp.addNumber(11);
-    std::cout << sp.shortestSpan() << std::endl;
-    std::cout << sp.longestSpan() << std::endl;
+    /* test exceed max size case */
+    try{
+        sp.addNumber(12);
+    } catch (std::exception& e)
+    {
+        std::cerr << e.what();
+    }
+
+    /* test shortest, longest span */
+    try {
+        std::cout << sp.shortestSpan() << std::endl;
+        std::cout << sp.longestSpan() << std::endl;   
+    } catch (std::exception& e)
+    {
+        std::cerr << e.what();
+    }
     return 0;
 }
