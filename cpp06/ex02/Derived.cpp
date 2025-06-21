@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:32:56 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/18 17:46:43 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/21 22:58:43 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 Base*   generate(void)
 {
-    // random seeding
-    std::srand(time(0));
+    
     // array of class ptrs
     Base* array[3];
     array[0] = new A();
