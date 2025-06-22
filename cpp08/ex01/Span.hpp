@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <exception>
 
 class Span
 {
@@ -26,12 +27,8 @@ class Span
         void addNumber(int input);
         int  shortestSpan();
         int  longestSpan();
-        // add a function to add multiple nb in a single call
+        void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
         
-        /* getter */
-
-        /* setter */
-
         class ExceedMaxSize : public std::exception {
             public:
                 const char* what() const throw() {

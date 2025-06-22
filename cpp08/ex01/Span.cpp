@@ -78,7 +78,11 @@ int  Span::longestSpan()
     }
 }
 
-/* getter */
-
-/* setter */  
-
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+    int addSize = std::distance(begin, end);
+    if (_nums.size() + addSize <= _N)
+        _nums.insert(_nums.end(), begin, end);
+    else
+        throw ExceedMaxSize();
+}

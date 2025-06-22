@@ -22,7 +22,12 @@ int main()
             min = temp[i + 1] - temp[i];
     }
     std::cout << "min: " << min << std::endl;
+
+    /* test std::distance */
+    int size = std::distance(nums.begin(), nums.end());
+    std::cout << "nums size: " << size << std::endl;
     
+    /* test std::adjacent_difference */
     // std::adjacent_difference(temp.begin(), temp.end(), output.begin());
     // std::cout << "\nafter\n";
     // for (int i = 0; i < 5; i++)
