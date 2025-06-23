@@ -72,6 +72,14 @@
         "fstream": "cpp",
         "sstream": "cpp",
         "memory_resource": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "__split_buffer": "cpp",
+        "charconv": "cpp",
+        "*.tpp": "cpp",
+        "numeric": "cpp",
+        "__tree": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "span": "cpp"
     }
 }

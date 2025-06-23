@@ -6,9 +6,11 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:08:45 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/19 16:02:58 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/23 18:16:50 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "Array.hpp"
 
 /* construction with no parameter */
 template <typename T>

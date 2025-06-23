@@ -13,10 +13,10 @@ cat > "${CLASS_NAME}.hpp" <<EOF
 class ${CLASS_NAME}
 {
     private:
-        // Add member variables here
+        
     public:
         /* constructors */
-        ${CLASS_NAME}();                            
+        ${CLASS_NAME}();                         
         ${CLASS_NAME}(const ${CLASS_NAME}& other);
         
         /* operator overload */

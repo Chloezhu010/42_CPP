@@ -75,6 +75,24 @@
     - create a new child class from an existing parent class
     - inherit all public and protected attributes and methods of the parent
     - able to override or extend behaviour
+
+## CPP04
+- Subtype polymorphism, abstract classes, interface
 - ex00
+    - virtual
 - ex01
+    - composition: having a member object inside another class
+    - handle deep copies of dynamically allocated resources
 - ex02
+    - abstract class
+- ex03
+    - interface & recap
+    - interface: ICharacter, IMateriaSource
+    - abstract class: AMateria (cannot be instantiated directly)
+    - polymorphism: use AMateria*, ICharactor* to generalize behavior
+    - deep copy: for characters and their materia inventory
+    - factory pattern: MateriaSource creates Materia dynamically
+    - virtual destructor: needed everywhere there's polymorphism
+
+## CPP05
+- Repetition & exceptions
