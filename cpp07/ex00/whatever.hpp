@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:58:36 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/18 21:40:47 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/24 16:21:24 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,30 @@ void swap(T& a, T& b)
 
 template <typename T>
 
+T& min(T& a, T& b)
+{
+    if (a < b)
+        return (a);
+    return (b);
+}
+
+template <typename T>
+
+T& max(T& a, T& b)
+{
+    if (a < b)
+        return (b);
+    return (a);
+}
+
+/* const version */
+template <typename T>
+
 const T& min(const T& a, const T& b)
 {
     if (a < b)
         return (a);
-    if (a >= b)
-        return (b);
+    return (b);
 }
 
 template <typename T>
@@ -38,13 +56,5 @@ const T& max(const T& a, const T& b)
 {
     if (a < b)
         return (b);
-    if (a >= b)
-        return (a);
-}
-
-template <typename T>
-
-T add(T a, T b)
-{
-    return (a + b);
+    return (a);
 }
