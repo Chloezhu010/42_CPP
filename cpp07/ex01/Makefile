@@ -7,7 +7,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
 # src files
-SRC = main.cpp 
+SRC = ex01.cpp 
 
 # obj files
 OBJ = $(SRC:.cpp=.o)
