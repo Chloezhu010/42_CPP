@@ -7,7 +7,7 @@ Why use it?
 - To handle multiple tasks like I/O, computation, and user interface simultaneously.
 
 ## What's a mutex
-A mutex (mutual execution) is used to prevent multiple threads from accessing shared resources at the same time, which would cause data races or corruption
+A mutex (mutual exclusion) is used to prevent multiple threads from accessing shared resources at the same time, which would cause data races or corruption
 ### Example
 ```cpp
 #include <iostream>

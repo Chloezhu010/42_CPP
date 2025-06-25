@@ -1,1 +1,0 @@
-Write the philo project in CPP
