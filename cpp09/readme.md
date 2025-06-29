@@ -10,8 +10,9 @@
     - Use ```std::ifstream``` and ```std::getline``` to handle file reading line by line
     - Use ```std::lower_bound``` logic or map iterators for closest matching keys
 - Container choose
-    - ```std::map```
+    - ```std::multimap```
     - Dates are naturally sorted keys -> map give O(log n) lookup with order
+    - For input file, one date may have multiple values
 ### Notes
 #### ```std::ifstream```
 - To read data from files, stands for input file stream
@@ -71,6 +72,14 @@
         }
     }
     ```
+#### ```substr()```
+- A member function of std::string class that extracts a substring from a string
+- Part of ```<string>``` lib
+- Basic syntax: ```string substr(size_t pos = 0, size_t len = npos) const;```
+    - pos: starting pos of the substring (default is 0)
+    - len: nb of char to include (default is npos)
+    - return: a new string containing the extracted substr
+
 
 ## ex01 Reverse polish notaion
 
