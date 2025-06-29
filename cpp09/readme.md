@@ -12,6 +12,65 @@
 - Container choose
     - ```std::map```
     - Dates are naturally sorted keys -> map give O(log n) lookup with order
+### Notes
+#### ```std::ifstream```
+- To read data from files, stands for input file stream
+- Part of the <fstream> lib
+- Key member functions
+
+    | Function     | Description                                             |
+    | ------------ | ------------------------------------------------------- |
+    | `.is_open()` | Checks if the file is open                              |
+    | `.getline()` | Reads a line from the file                              |
+    | `.eof()`     | Checks if end of file has been reached                  |
+    | `.close()`   | Closes the file                                         |
+    | `.good()`    | Checks if the stream is in good state                   |
+    | `operator>>` | Can be used like `file >> variable` for formatted input |
+
+- Example of usage
+
+    ```cpp
+    #include <iostream>
+    #include <fstream>
+    #include <string>
+
+    int main() {
+        std::ifstream file("example.txt");  // Open the file for reading
+
+        if (!file.is_open()) {
+            std::cerr << "Failed to open file.\n";
+            return 1;
+        }
+
+        std::string line;
+        while (std::getline(file, line)) {
+            std::cout << line << std::endl;  // Print each line
+        }
+
+        file.close();  // Close the file
+        return 0;
+    }
+    ```
+#### ```std::getline```
+- Read a line of text from an input stream until it encounters a delimiter (\n by default)
+- Basic syntax: ```std::getline(input_stream, string_variable, delimiter);```
+    - input_strea: the stream to read from eg. std::cin or ifstream
+    - string_variable: a std::string where the content will be stored
+    - delimiter (optional): the char that stops reading
+- Example: Read from a file line by line
+    ```cpp
+    #include <fstream>
+    #include <string>
+
+    int main() {
+        std::ifstream file("data.txt");
+        std::string line;
+        
+        while (std::getline(file, line)) {  // Reads until EOF
+            std::cout << line << '\n';
+        }
+    }
+    ```
 
 ## ex01 Reverse polish notaion
 
