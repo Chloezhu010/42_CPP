@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:49 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/29 22:47:05 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/29 22:56:43 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int main(int ac, char **av)
     {
         std::cout << e.what() << std::endl;
     }
-    printMap(exchange.getMap());
+    printMap(exchange.getMap()); // debug
+    /* process input file */
     
     (void)av;
     

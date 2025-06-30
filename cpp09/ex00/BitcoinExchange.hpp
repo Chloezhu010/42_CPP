@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:47 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/29 22:37:35 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/30 17:45:53 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ class BitcoinExchange
 {
     private:
         std::map<std::string, double> btcRate;
+        /* utility functions */
+        bool isValidDate(const std::string& date);
+        bool isValidValue(const double value);
+        
     public:
         /* constructors */
         BitcoinExchange();               
@@ -38,6 +42,7 @@ class BitcoinExchange
 
         /* member functions */
         void loadData(std::string input);
+        void processInput(std::string filename);
 
         /* getter */
         const std::map<std::string, double>& getMap() const;
