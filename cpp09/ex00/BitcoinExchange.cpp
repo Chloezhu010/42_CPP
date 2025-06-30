@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:41 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/30 20:52:00 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/30 22:09:24 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,23 @@ bool BitcoinExchange::isValidDate(const std::string& date)
     // check year
     std::istringstream yss(yearStr);
     double year;
-    bool validYear;
+    bool validYear = false;
     if (yss >> year)
         validYear = true;
     // check month
     std::istringstream mss(monthStr);
     double month;
-    bool validMonth;
+    bool validMonth = false;
     if ((mss >> month) && month >= 1 && month <= 12)
-        validMonth = false;
+        validMonth = true;
     // check day
     std::istringstream dss(dayStr);
     double day;
-    bool validDay;
+    bool validDay = false;
     if ((dss >> day) && (day >= 1 && day <= 31))
         validDay = true;
     // check Feb
-    bool checkFeb;
+    bool checkFeb = false;
     if ((static_cast<int>(year) % 4 == 0 && (day >= 0 && day <= 29))
         || (static_cast<int>(year) % 4 != 0 && (day >= 0 && day <= 28)))
         checkFeb = true;
@@ -83,7 +83,13 @@ bool BitcoinExchange::isValidDate(const std::string& date)
     return (res);
 }
 
-bool BitcoinExchange::isValidValue(const std::string& valueStr)
+/* check value
+    - value: 0
+    - not positive: 1
+    - too large: 2
+    - not a nbr: 3
+*/
+int BitcoinExchange::isValidValue(const std::string& valueStr)
 {
     // check if can convert to double
     std::istringstream iss(valueStr);
@@ -92,17 +98,20 @@ bool BitcoinExchange::isValidValue(const std::string& valueStr)
     {
         // check if positive and under 1000
         if (value >= 0 && value <= 1000)
-            return (true);
+            return (0);
+        else if (value < 0)
+            return (1);
+        else if (value > 1000)
+            return (2);
     }
-    else
-        return (false);
+    return (3);
 }
 
 /* member functions */
 void BitcoinExchange::loadData(std::string input)
 {
     std::ifstream file(input.c_str());
-    /* input file check */
+    /* file check */
     if (!file.is_open())
         throw std::runtime_error("Error: Fail to load data.csv\n");
     /* parse input into map container */ 
@@ -122,6 +131,48 @@ void BitcoinExchange::loadData(std::string input)
         }
         else
             std::cerr << "Error: invalid line.\n";
+    }
+    file.close();
+}
+
+void BitcoinExchange::processInput(std::string filename)
+{
+    std::ifstream file(filename.c_str());
+    /* file check */
+    if (!file.is_open())
+        throw std::runtime_error("Error: Fail to load input file\n");
+    /* process line by line, check date & value */
+    std::string line;
+    // skip the header line
+    std::getline(file, line);
+    // start processing
+    while (std::getline(file, line))
+    {
+        size_t delimiterPos = line.find(" | ");
+        if (delimiterPos != line. npos)
+        {
+            std::string date = line.substr(0, delimiterPos);
+            // std::cout << "DEBUG: " << date << std::endl; //debug
+            std::string valueStr = line.substr(delimiterPos + 3, line.npos);
+            // std::cout << "DEBUG: " << valueStr << std::endl; //debug
+            // check date
+            if (isValidDate(date) == false)
+                std::cout << "Error: bad input => " << date << std::endl;
+            // check value
+            if (isValidValue(valueStr) == 1)
+                std::cout << "Error: not a positive number\n";
+            else if (isValidValue(valueStr) == 2)
+                std::cout << "Error: too large a number\n";
+            else if (isValidValue(valueStr) == 3)
+                std::cout << "Error: not a number\n";
+            // both valid
+            if (isValidDate(date) && isValidValue(valueStr) == 0)
+            {
+                std::cout << "[TBD]\n";
+            }
+        }
+        else
+            std::cerr << "Error: invalid line\n";
     }
     file.close();
 }

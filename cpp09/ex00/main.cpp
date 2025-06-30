@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:49 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/29 22:56:43 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/30 22:09:06 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,19 @@ int main(int ac, char **av)
     BitcoinExchange exchange;
     try {
         exchange.loadData("data.csv");
-        // std::cout << "test\n";
     } catch (std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }
-    printMap(exchange.getMap()); // debug
+    // printMap(exchange.getMap()); // debug
     /* process input file */
-    
-    (void)av;
-    
+    try {
+        exchange.processInput(av[1]);
+    } catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+   
     
     return (0);
 }

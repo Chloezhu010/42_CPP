@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:49 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/30 20:52:53 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/30 21:59:01 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int main(int ac, char **av)
     // std::cout << dayStr << std::endl;
 
     // ======= Test date =======
-    std::string date = "2025-03-31";
+    std::string date = "2011-01-03";
     // initial check
     if (date.size() != 10 || date[4] != '-' || date[7] != '-')
     {
@@ -169,8 +169,9 @@ int main(int ac, char **av)
     }
     else
         resValue = false;
-    
     std::cout << "Value valid or not: " << resValue << std::endl;
     
+    
+
     return (0);
 }
