@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:41 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/30 20:28:59 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/30 20:52:00 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,28 @@ bool BitcoinExchange::isValidDate(const std::string& date)
     if ((static_cast<int>(year) % 4 == 0 && (day >= 0 && day <= 29))
         || (static_cast<int>(year) % 4 != 0 && (day >= 0 && day <= 28)))
         checkFeb = true;
+    // final validation
     bool res = validYear && validMonth && validDay;
     if (month == 2)
         res = res && checkFeb;
     else if (month == 4 || month == 6 || month == 9 || month == 11)
         res = res && (day <= 30);
-    else
-        res = res && (day <= 31);
     return (res);
+}
+
+bool BitcoinExchange::isValidValue(const std::string& valueStr)
+{
+    // check if can convert to double
+    std::istringstream iss(valueStr);
+    double value;
+    if (iss >> value)
+    {
+        // check if positive and under 1000
+        if (value >= 0 && value <= 1000)
+            return (true);
+    }
+    else
+        return (false);
 }
 
 /* member functions */

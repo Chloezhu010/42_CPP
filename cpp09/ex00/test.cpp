@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:49 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/30 20:28:26 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/30 20:52:53 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ int main(int ac, char **av)
     // std::cout << monthStr << std::endl;
     // std::cout << dayStr << std::endl;
 
-    std::string date = "2025-42-30";
+    // ======= Test date =======
+    std::string date = "2025-03-31";
     // initial check
     if (date.size() != 10 || date[4] != '-' || date[7] != '-')
     {
@@ -137,14 +138,6 @@ int main(int ac, char **av)
         validDay = true;
         std::cout << "day valid\n";
     }
-    // check month with 30 days
-    // bool specialMonth = false;
-    // if ((month == 4 || month == 6 || month == 9 || month == 11)
-    //     && (day >= 0 && day <= 30))
-    // {
-    //     specialMonth = true;
-    //     std::cout << "special month valid\n";
-    // }
     // check Feb
     bool checkFeb = false;
     if ((static_cast<int>(year) % 4 == 0 && (day >= 0 && day <= 29))
@@ -158,12 +151,26 @@ int main(int ac, char **av)
         res = res && checkFeb;
     else if (month == 4 || month == 6 || month == 9 || month == 11)
         res = res && (day <= 30);
+    // else
+    //     res = res && (day <= 31);
+
+    std::cout << "Date valid or not: " << res << std::endl;
+
+    // ======= Test value =======
+    std::string valueStr = "999.99999";
+    bool resValue;
+    std::istringstream iss(valueStr);
+    double value;
+    if (iss >> value)
+    {
+        // check if positive and under 1000
+        if (value >= 0 && value <= 1000)
+            resValue = true;
+    }
     else
-        res = res && (day <= 31);
-
-    std::cout << "valid or not: " << res << std::endl;
-
+        resValue = false;
     
+    std::cout << "Value valid or not: " << resValue << std::endl;
     
     return (0);
 }
