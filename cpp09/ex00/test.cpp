@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:49 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/30 21:59:01 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/01 11:50:56 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,19 @@ int main(int ac, char **av)
         resValue = false;
     std::cout << "Value valid or not: " << resValue << std::endl;
     
-    
+    // ======= Test findPrice =======
+    std::map<std::string, double> btcRate;
+    btcRate["2011-01-04"] = 0.3;
+    btcRate["2011-01-07"] = 0.32;
+    btcRate["2011-01-10"] = 0.33;
+    btcRate["2011-01-13"] = 0.42;
+
+    std::map<std::string, double>::iterator it;
+    it = btcRate.lower_bound("2011-01-09");
+    if (it != btcRate.end())
+        std::cout << it->first << ", " << it->second << std::endl;
+    else
+        std::cout << "-1\n";
 
     return (0);
 }

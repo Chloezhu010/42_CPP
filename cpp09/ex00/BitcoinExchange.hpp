@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:47 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/30 21:12:40 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/30 22:56:40 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class BitcoinExchange
         /* member functions */
         void loadData(std::string input);
         void processInput(std::string filename);
+        double findPrice(std::string date);
 
         /* getter */
         const std::map<std::string, double>& getMap() const;

@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:41 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/30 22:09:24 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/01 20:27:55 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 /* default constructor */
 BitcoinExchange::BitcoinExchange()
 {
-    std::cout << "BitcoinExchange: Default constructor called" << std::endl;
+    // std::cout << "BitcoinExchange: Default constructor called" << std::endl;
 }
 
 /* copy constructor */
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
 {
-    std::cout << "BitcoinExchange: Copy constructor called" << std::endl;
+    // std::cout << "BitcoinExchange: Copy constructor called" << std::endl;
     *this = other;
 }
 
 /* copy assignment operator */
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 {
-    std::cout << "BitcoinExchange: Copy assignment operator called" << std::endl;
+    // std::cout << "BitcoinExchange: Copy assignment operator called" << std::endl;
     if (this != &other) {
         this->btcRate = other.btcRate;
     }
@@ -38,7 +38,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 /* destructor */
 BitcoinExchange::~BitcoinExchange()
 {
-    std::cout << "BitcoinExchange: Destructor called" << std::endl;
+    // std::cout << "BitcoinExchange: Destructor called" << std::endl;
 }
 
 /* utility functions */
@@ -83,8 +83,8 @@ bool BitcoinExchange::isValidDate(const std::string& date)
     return (res);
 }
 
-/* check value
-    - value: 0
+/* check value, return
+    - valid: 0
     - not positive: 1
     - too large: 2
     - not a nbr: 3
@@ -135,6 +135,28 @@ void BitcoinExchange::loadData(std::string input)
     file.close();
 }
 
+double BitcoinExchange::findPrice(std::string date)
+{
+    std::map<std::string, double>::iterator it;
+    // it = btcRate.find(date);
+    it = btcRate.lower_bound(date);
+    // exact match
+    if (it != btcRate.end() && it->first == date)
+        return (it->second);
+    // before 2009-01-02
+    else if (it == btcRate.begin())
+        return (-1);
+    // not exact match, step back to the closest earlier date
+    else if (it != btcRate.end() && it->first != date)
+    {
+        it--;
+        return (it->second);
+    }
+    // no match in the database
+    else
+        return (-1);
+}
+
 void BitcoinExchange::processInput(std::string filename)
 {
     std::ifstream file(filename.c_str());
@@ -155,6 +177,7 @@ void BitcoinExchange::processInput(std::string filename)
             // std::cout << "DEBUG: " << date << std::endl; //debug
             std::string valueStr = line.substr(delimiterPos + 3, line.npos);
             // std::cout << "DEBUG: " << valueStr << std::endl; //debug
+            
             // check date
             if (isValidDate(date) == false)
                 std::cout << "Error: bad input => " << date << std::endl;
@@ -168,7 +191,13 @@ void BitcoinExchange::processInput(std::string filename)
             // both valid
             if (isValidDate(date) && isValidValue(valueStr) == 0)
             {
-                std::cout << "[TBD]\n";
+                double value = atof(valueStr.c_str());
+                double price = findPrice(date);
+                double result = price * value;
+                if (price < 0)
+                    std::cout << "Error: date out of range\n";
+                else
+                    std::cout << date << " => " << valueStr << " = " << result << std::endl;
             }
         }
         else
