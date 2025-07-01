@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:51:10 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/01 23:08:26 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/01 23:14:55 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@
 #include <iostream>
 #include <stack> // for stack
 #include <string>
+#include <sstream> // for istringstream
 
 class RPN
 {
     private:
         std::stack<int> _stack;
 
-        void processToken(std::string &input);
+        /* utility functions */
+        void processToken(const std::string &token);
+        int isValidNumber(const std::string &token);
+        int isValidOperator(const std::string &token);
         
     public:
         /* constructors */
@@ -36,6 +40,7 @@ class RPN
         ~RPN();
 
         /* member functions */
+        void evaluate(const std::string &input);
 
         /* getter */
 

@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:51:07 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/01 20:51:08 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/01 23:11:44 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,17 @@ RPN::~RPN()
 {
     std::cout << "RPN: Destructor called" << std::endl;
 }
+
+/* utility functions */
+int RPN::isValidNumber(const std::string &token)
+{
+    std::istringstream iss(token);
+    
+}
+
+// int RPN::isValidOperator(const std::string &token)
+
+// void RPN::processToken(const std::string &token)
 
 /* member functions */
 
