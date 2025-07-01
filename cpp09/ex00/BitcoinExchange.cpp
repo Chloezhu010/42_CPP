@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:41 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/01 20:27:55 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/01 20:49:24 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,10 +174,7 @@ void BitcoinExchange::processInput(std::string filename)
         if (delimiterPos != line. npos)
         {
             std::string date = line.substr(0, delimiterPos);
-            // std::cout << "DEBUG: " << date << std::endl; //debug
             std::string valueStr = line.substr(delimiterPos + 3, line.npos);
-            // std::cout << "DEBUG: " << valueStr << std::endl; //debug
-            
             // check date
             if (isValidDate(date) == false)
                 std::cout << "Error: bad input => " << date << std::endl;

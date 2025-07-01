@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:58:49 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/01 11:50:56 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/01 20:51:36 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ int main(int ac, char **av)
     it = btcRate.lower_bound("2011-01-09");
     if (it != btcRate.end())
         std::cout << it->first << ", " << it->second << std::endl;
+        
     else
         std::cout << "-1\n";
 

@@ -5,37 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/26 21:58:49 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/01 20:46:36 by chloe            ###   ########.fr       */
+/*   Created: 2025/07/01 20:50:50 by chloe             #+#    #+#             */
+/*   Updated: 2025/07/01 21:16:26 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
 int main(int ac, char **av)
 {
-    /* input count check */
+    /* input check */
     if (ac != 2)
     {
-        std::cerr << "Error: Neet an input file\n";
+        std::cerr << "Error: Need one input\n";
         return (1);
     }
-    /* load data.csv */
-    BitcoinExchange exchange;
-    try {
-        exchange.loadData("data.csv");
-    } catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    /* process input file */
-    try {
-        exchange.processInput(av[1]);
-    } catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-   
     
     return (0);
 }

@@ -9,8 +9,8 @@
     - Use a container to store date-value pairs for fast lookup by date or closest lower bound
     - Use ```std::ifstream``` and ```std::getline``` to handle file reading line by line
     - Use ```std::lower_bound``` logic or map iterators for closest matching keys
-- Container choose
-    - ```std::multimap```
+- Container
+    - ```std::map```
     - Dates are naturally sorted keys -> map give O(log n) lookup with order
     - For input file, one date may have multiple values
 ### Notes
@@ -79,9 +79,149 @@
     - pos: starting pos of the substring (default is 0)
     - len: nb of char to include (default is npos)
     - return: a new string containing the extracted substr
+#### ```std::map```
+- A associative container in C++ that stores key-value pairs, with the keys kept in sorted order
+- Incl. in the ```<map>``` lib and based on a self-balancing red-black tree
+- Basic syntax: 
+    - ```std::map<std::string, int> myMap;```
+- Common operations
+    - Insert or assign
+        ```cpp
+        myMap["apple"] = 5;                  // Inserts or updates
+        myMap.insert({"banana", 10});       // Insert only if key doesn't exist
+        ```
+    - Lookup
+        ```cpp
+        #include <iostream>
+        #include <map>
+        #include <string>
 
+        int main() {
+            std::map<std::string, int> ages {
+                {"Alice", 30},
+                {"Bob", 25},
+                {"Charlie", 35}
+            };
+
+            // Using operator[]
+            std::cout << "Alice's age: " << ages["Alice"] << "\n";  // 30
+            
+            // Using at()
+            try {
+                std::cout << "Bob's age: " << ages.at("Bob") << "\n";  // 25
+                std::cout << "Dave's age: " << ages.at("Dave") << "\n";  // throws
+            } catch(const std::out_of_range& e) {
+                std::cout << "Key not found\n";
+            }
+
+            // Using find()
+            auto it = ages.find("Charlie");
+            if (it != ages.end()) {
+                std::cout << "Charlie's age: " << it->second << "\n";  // 35
+            } else {
+                std::cout << "Charlie not found\n";
+            }
+
+            return 0;
+        }
+        ```
+    - Erase
+        ```cpp
+        myMap.erase("banana");
+        ```
+    - Iterate
+        ```cpp
+        for (std::map<std::string, int>::iterator it = myMap.begin(); it != myMap.end(); ++it)
+            std::cout << it->first << ": " << it->second << "\n";
+
+        // Or use C++11 style:
+        for (const auto& [key, value] : myMap)
+            std::cout << key << ": " << value << "\n";
+        ```
+#### ```std::lower_bound```
+- A binary search algo that returns the 1st position in a sorted range
+- Incl in the ```<algorithm>``` lib
+- Basic synthax: ```iterator = std::lower_bound(begin, end, value);```
+    - Search in the [begin, end] range
+    - Return an iterator pointing to the 1st element >= value
+    - The range must be sorted
+- Example
+    ```cpp
+    #include <iostream>
+    #include <vector>
+    #include <algorithm>
+
+    int main() {
+        std::vector<int> v = {10, 20, 30, 40, 50};
+
+        auto it = std::lower_bound(v.begin(), v.end(), 30);
+        std::cout << *it << std::endl;  // Output: 30
+
+        it = std::lower_bound(v.begin(), v.end(), 35);
+        std::cout << *it << std::endl;  // Output: 40
+    }
+    ```
 
 ## ex01 Reverse polish notaion
+- Goal: Build a program that can parse & evaluate a IPN expression using a stack
+- Core ideas
+    - Inverse polish notation
+    - Stack-based evaluation
+    - Input parsing
+        - split the input into tokens
+        - push nb onto the stack
+        - when encountering an operator, pop 2 numbers, apply the operation, and push the result
+    - Error handling
+        - Invalid char
+        - Division by 0
+        - Too many/ few operators
+        - Badly formed expression
+- Container
+    - ```std::stack```
+    - Match LIFO data structure
+
+### Notes
+#### Inverted polish math expression
+- Characteristics of IPN
+    - No parentheses needed
+    - Evaluated from left to right using a stack
+    - Widely used in stack-based calculators, compilers, and interpreter design
+- Example
+    ```
+    // normal
+    3 + 4
+    (3 + 4) * (5 - 2)
+
+    // IPN
+    3 4 +
+    3 4 + 5 2 - *
+    ```
+- How to evaluate IPN
+    - Use a stack
+        - Read tokens left to right
+        - Push operands to the stack
+        - When see an operator, pop the top 2 elements, apply the operator, push the result back
+    - For ```3 4 + 5 2 - *```
+        - Push 3 to stack: [3]
+        - Push 4 to stack: [3, 4]
+        - +, pop 3 and 4: 3+4=7, push to stack: [7]
+        - Push 5 and 2: [7, 5, 2]
+        - -, pop 5 and 2: 5-3=3, push to stack: [7, 3]
+        - *, pop 7 and 3: 7*3=21, push to stack: [21]
+#### ```std::stack```
+- A container adapter that gives you LIFO behavior
+- Incl in the ```<stack>``` header
+- Common member functions
+
+    | Function  | Description                                 |
+    | --------- | ------------------------------------------- |
+    | `push(x)` | Adds `x` to the top of the stack            |
+    | `pop()`   | Removes the top element                     |
+    | `top()`   | Returns (reference to) the top element      |
+    | `empty()` | Returns `true` if the stack is empty        |
+    | `size()`  | Returns the number of elements in the stack |
+
+
 
 ## ex02 PmergeMe
 
