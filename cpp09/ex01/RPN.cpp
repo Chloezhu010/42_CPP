@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:51:07 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/02 20:54:20 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/02 21:56:39 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,35 @@ int RPN::isValidOperator(const std::string &token)
     return (0);
 }
 
+void RPN::applyOperator(const std::string &op)
+{
+    // check stack
+    if (_stack.size() < 2)
+        throw (std::runtime_error("Error"));
+    // obtain the top and second nb
+    int top = _stack.top();
+    _stack.pop();
+    int second = _stack.top();
+    _stack.pop();
+    int res;
+    // apply operator
+    if (op == "+")
+        res = top + second;
+    else if (op == "-")
+        res = second - top;
+    else if (op == "*")
+        res = top * second;
+    else if (op == "/")
+    {
+        if (top == 0)
+            throw (std::runtime_error("Error: division by zero"));
+        res = second / top;
+    }
+    else
+        throw (std::runtime_error("Error: unknown operator"));
+    _stack.push(res);    
+}
+
 void RPN::processToken(const std::string &input)
 {
     std::istringstream iss(input);
@@ -84,23 +113,23 @@ void RPN::processToken(const std::string &input)
         }
         // check operator
         else if (isValidOperator(token))
-        {
-            std::cout << token << "\n";
-        }
+            applyOperator(token);
         else
-            std::cerr << "Error: Invaid input -> " << token << std::endl;
+            throw (std::runtime_error("Error: Invalid input"));
     }
 }
 
 /* member functions */
-// void RPN::evaluate(const std::string &input)
-// {
-    
-// }
-
-/* getter */
-
-/* setter */  
+int RPN::evaluate(const std::string &input)
+{
+    std::istringstream iss(input);
+    std::string token;
+    while (iss >> token)
+        processToken(token);
+    if (_stack.size() != 1)
+        throw (std::runtime_error("Error"));
+    return (_stack.top());
+}
 
 /* debug functions */
 void RPN::printStack()

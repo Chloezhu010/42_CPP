@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:50:50 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/02 14:33:16 by czhu             ###   ########.fr       */
+/*   Updated: 2025/07/02 21:55:51 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,15 @@ int main(int ac, char **av)
         std::cerr << "Error: Need one input, eg. \"3 4 +\"\n";
         return (1);
     }
-    
-    RPN test;    
-    test.processToken(av[1]);
-    test.printStack();    
-    
+    /* process input */
+    RPN rpn;    
+    try {
+        int res = rpn.evaluate(av[1]);
+        std::cout << res << "\n";
+    }
+    catch (std::exception &e)
+    {
+        std::cerr << e.what() << "\n";
+    }
     return (0);
 }
