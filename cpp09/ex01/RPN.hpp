@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:51:10 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/01 23:14:55 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/02 14:26:27 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class RPN
         std::stack<int> _stack;
 
         /* utility functions */
-        void processToken(const std::string &token);
-        int isValidNumber(const std::string &token);
-        int isValidOperator(const std::string &token);
+        
+        int isValidNumber(const char &c);
+        int isValidOperator(const char &c);
         
     public:
         /* constructors */
@@ -40,11 +40,15 @@ class RPN
         ~RPN();
 
         /* member functions */
+        void processToken(const std::string &input);
         void evaluate(const std::string &input);
 
         /* getter */
 
         /* setter */
+
+        /* debug function */
+        void printStack();
 };
 
 #endif
