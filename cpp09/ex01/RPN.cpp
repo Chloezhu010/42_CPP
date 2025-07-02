@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:51:07 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/02 15:01:27 by czhu             ###   ########.fr       */
+/*   Updated: 2025/07/02 20:54:20 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,63 +42,54 @@ RPN::~RPN()
 }
 
 /* utility functions */
-/* check number
+/* check number with in -10 to 10
     - valid: return 1
     - invalid: return 0
 */
-int RPN::isValidNumber(const char &c)
+int RPN::isValidNumber(const std::string &token)
 { 
-    if (c >= 48 && c<= 57)
-        return (1);
-    return (0);
+    std::istringstream iss(token);
+    int nb;
+    char leftover;
+    
+    if (!(iss >> nb))
+        return (0);
+    if (iss >> leftover)
+        return (0);
+    return (nb > -10 && nb < 10);
 }
 
 /* check operator
     - valid: return 1
     - invalid: return 0
 */
-int RPN::isValidOperator(const char &c)
+int RPN::isValidOperator(const std::string &token)
 {
-    if (c == '-' || c == '+' || c == '*' || c == '/')
-        return (1);
-    return (0);
-}
-
-/* check space
-    - is space: return 1
-    - not space: return 0
-*/
-static int isSpace(char c)
-{
-    if (c == 32 || (c >= 7 && c <= 13 ))
+    if (token == "-" || token == "+" || token == "*" || token == "/")
         return (1);
     return (0);
 }
 
 void RPN::processToken(const std::string &input)
 {
-    int i = 0;
-    /* start process input str */
-    while (input[i])
+    std::istringstream iss(input);
+    std::string token;
+    while (iss >> token)
     {
-        // skip space
-        while (isSpace(input[i]))
-            i++;
-        // check nb
-        if (isValidNumber(input[i]))
+        // check nbr
+        if (isValidNumber(token))
         {
-            // convert the nbr into int
-            int nb = input[i] - 48;
-            // push to the stack
-            _stack.push(nb);
+            int nb = atoi(token.c_str());
+            _stack.push(nb);            
         }
         // check operator
-        else if (isValidOperator(input[i]))
-            std::cout << input[i] << std::endl; // debug
+        else if (isValidOperator(token))
+        {
+            std::cout << token << "\n";
+        }
         else
-            std::cerr << "Error: Invaid input\n";
-        i++;
-    } 
+            std::cerr << "Error: Invaid input -> " << token << std::endl;
+    }
 }
 
 /* member functions */
