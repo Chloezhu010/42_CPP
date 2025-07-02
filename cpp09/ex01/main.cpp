@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:50:50 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/02 21:55:51 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/02 22:10:47 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main(int ac, char **av)
     try {
         int res = rpn.evaluate(av[1]);
         std::cout << res << "\n";
+        // rpn.printStack();// debug
     }
     catch (std::exception &e)
     {

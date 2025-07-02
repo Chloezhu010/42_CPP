@@ -220,8 +220,41 @@
     | `top()`   | Returns (reference to) the top element      |
     | `empty()` | Returns `true` if the stack is empty        |
     | `size()`  | Returns the number of elements in the stack |
+#### ```std::istringstream```
+- A stream that reads from a ```std::string```
+- Incl in ```<sstream>``` header
+- Key use cases
+    - Split a string into space-separated tokens
+    - Parse strings into int, float, etc.
+    - Process cmd line inputs or file content
+- Example
+    ```cpp
+    #include <sstream>
+    #include <string>
+    #include <iostream>
 
+    int main() {
+        std::string input = "42 hello 3.14";
+        std::istringstream iss(input);
 
+        int a;
+        std::string word;
+        double pi;
+
+        iss >> a >> word >> pi;
+
+        std::cout << "a = " << a << "\n";
+        std::cout << "word = " << word << "\n";
+        std::cout << "pi = " << pi << "\n";
+
+        return 0;
+    }
+
+    // output
+    // a = 42
+    // word = hello
+    // pi = 3.14
+    ```
 
 ## ex02 PmergeMe
 
