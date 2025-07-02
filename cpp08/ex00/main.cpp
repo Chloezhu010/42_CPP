@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 17:22:07 by chloe             #+#    #+#             */
-/*   Updated: 2025/06/20 14:08:03 by chloe            ###   ########.fr       */
+/*   Updated: 2025/06/26 14:13:26 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main()
     lists.push_back(30);
     lists.push_back(40);
     
-    easyfind(lists, 50);
+    easyfind(lists,40);
 
     return (0);
 }
