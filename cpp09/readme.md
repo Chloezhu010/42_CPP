@@ -346,7 +346,7 @@
         - efficiently maintain the heap after each removal, resulting in a sorted list
 - Hybrid algo: adapt to data features and combine the best features of multiple sorts
     - Merge-insert sort: one of the hybrid algo
-#### Merge-insert sort
+#### Merge-insert sort in high level
 - Merge-insertion sort (Ford–Johnson algorithm, 1959) is a hybrid that combines merge sort's initial pairing with insertion sort's binary insertions. Its main distinction:
     - **Optimal for small lists**: For up to 22 elements, it uses the minimum number of comparisons possible for any comparison sort
     - **Hybrid mechanism**: Pairs elements and recursively sorts the larger ones (like merge sort), then inserts the remaining elements in a carefully chosen order using binary search (like insertion sort)
@@ -355,6 +355,32 @@
     - Merge-insert sort: not used in practice for large data due to complexity and diminishing returns
     - Merge sort & Quick sort: dominate practical use for large dataset due to efficency and adapatability
     - Hybrid algo (eg. Timsort, Introsort) use insertion sort for small subarrays
+#### Merge-insert sort high-level flow
+- Sample: [5, 2, 8, 1, 6, 3, 9, 4, 7]
+- Pairing:
+    - (5,2) -> (2,5)
+    - (8,1) -> (1,8)
+    - (6,3) -> (3,6)
+    - (9,4) -> (4,9)
+    - (7) -> left unpaired
+    - Pairs: [(2,5), (1,8), (3,6), (4,9), (7)]
+    - Large elements: [5, 8, 6, 9]
+    - Small elements: [2, 1, 3, 4]
+    - Left over: [7]
+- Recursive sort of large elements
+    - Recursively sort [5, 8, 6, 9] using merge-insert sort algo
+    - Assume it returns [5, 6, 8, 9], then it's our **sorted main chain**
+- Strategic insertion of small elements
+    - Use binary search on the main chain, to find a place for insertion
+    - The insertion works similarly to binary insertion sort, but with a twist
+        - The insertion order is dictated by math sequence called Jacobsthal numbers
+    - The optimized insertion order is [1,4,2,3,7]
+    - Based on binary search, insert one by one
+        - insert 1: [1,5,6,8,9]
+        - insert 4: [1,4,5,6,8,9]
+        - insert 2: [1,2,4,5,6,8,9]
+        - insert 3: [1,2,3,4,5,6,8,9]
+        - insert 7: [1,2,3,4,5,6,7,8,9]
 
 #### ```std::vector```
 - A dynamic array in the CPP STL lib. It's one of the most used containers becauses it combines
