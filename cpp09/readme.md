@@ -257,6 +257,168 @@
     ```
 
 ## ex02 PmergeMe
+- Goal
+    - Simulate a hybrid sorting algo (based on merge-insertion sort) to sort a sequence of positive int
+    - Take unsorted nb as input, store them in containers, apply a hybrid sorting algo while measuring execution time for each container
+        - Understand the sorting optimizations
+        - Use containers (vector and deque) and compare their performance
+        - Measure runtime for each container
+- Key concept
+    - Merge insertion / Ford Johnson algo simplified version
+        - Insertion sort for small subgroups
+        - Merge sort for combining sorted subgroups
+        - Balance the simplicity of insertion sort (good for small n) and the power of merge sort (good for large n)
+    - Divide and conquer
+        - Input list split into pairs of elements
+        - Each pair is partially sorted, then the larger elements are recursively sorted into a main chain
+        - The smaller elements are inserted in the correct position within the sorted sequence using binary search
+    - Performance benchmark
+        - Compare ```std::vector``` and ```std::deque``` for the smae sorting operation
+        - Time complexity should be the same
+        - But memory layout and access patterns differ -> diff in real-world timing
+- Container
+    - ```std::vector```
+        - Contiguous memory, good cache locality
+        - Fast random access
+        - Ideal for binary search and insertion
+        - Slight overhead when inserting not at the end
+    - ```std::deque```
+        - Double-ended queue with segmented memory layout
+        - Constant-time insertion/ removal at both ends
+        - Slighly slower random access than vector
+        - Useful if many insertions/ removals are not at the end
+- Implementation logic
+    - Parse input
+        - Only accept valid positive int
+        - Check for duplicates or invalid input
+    - Store input
+        - Store the input into both container
+    - Sort each container with merge-insert algo
+        - Group nb in pairs
+        - Sort each pair
+        - Recursively merge the larger elements
+        - Insert the smaller ones into the right position in the sorted list
+    - Measure performance
+        - Time the operation on each container
+        - Output sorted list & duration in micro/ milliseconds
+
+### Notes
+#### Different sorting mechanism and evolution
+- Sorting algo are mechanism that arranges elements of a list / array in a specific order
+- Major sorting algo and evolution
+
+    | Algorithm            | Era Introduced | Time Complexity        | Key Features & Evolutionary Role                                  |
+    |----------------------|---------------|------------------------|-------------------------------------------------------------------|
+    | Bubble Sort          | 1950s         | O(n^2)                 | Simple, educational, inefficient for large data                   |
+    | Selection Sort       | 1950s         | O(n^2)                 | Simple, but not efficient for large datasets                      |
+    | Insertion Sort       | 1950s         | O(n^2)                 | Efficient for small or nearly sorted data; used in modern hybrids |
+    | Merge Sort           | 1945–1950s    | O(n log n)             | First efficient divide-and-conquer sort; stable, consistent       |
+    | Quick Sort           | 1960          | Avg: O(n log n), Worst: O(n^2) | Fast in practice, in-place, widely used, not stable by default    |
+    | Heap Sort            | 1964          | O(n log n)             | Good worst-case, in-place, not stable, less cache-friendly        |
+    | Hybrid Sorts         | 1990s+        | O(n log n)             | Combine strengths of multiple algorithms (e.g., Timsort, Introsort)|
+
+- Early algo: simple but inefficient for large data
+    - Bubble sort
+        - repeatedly steps through the list, compare adjacent elements, swap them if in wrong order
+        - bubble the largest unsorted element to its correct position at the end
+        - continue until no swaps are needed
+    - Selection sort
+        - divide the list into a sorted and unsorted part
+        - repeatedly select the smallest element from the unsorted part and swap it with the 1st unsorted element
+        - grow the sorted portion one element at a time
+    - Insertion sort
+        - build the sorted list one element at a time
+        - take each element and insert it into its correct position among the already sorted elements
+        - efficient for small or nearly sorted datasets
+- Divide and conquer algo: major efficiency improvements in the 60s
+    - Merge sort
+        - recursively split the list into halves until each sublist contains one element
+        - merge sublist back together in sorted order, producing a fully sorted list
+        - require extra space for merging
+    - Quick sort
+        - select a pivot element, partitions the list into elements less than/ greater than the pivot
+        - recursively sort the partitions
+        - fast in practice, but performance can be poor if pivots are chosen badly
+- Heap sort: added stable performance regardless of input order
+    - Heap sort
+        - build a binary heap from the list
+        - repeatedly remove the largest element from the heap and place it at the end of the list
+        - efficiently maintain the heap after each removal, resulting in a sorted list
+- Hybrid algo: adapt to data features and combine the best features of multiple sorts
+    - Merge-insert sort: one of the hybrid algo
+#### Merge-insert sort
+- Merge-insertion sort (Ford–Johnson algorithm, 1959) is a hybrid that combines merge sort's initial pairing with insertion sort's binary insertions. Its main distinction:
+    - **Optimal for small lists**: For up to 22 elements, it uses the minimum number of comparisons possible for any comparison sort
+    - **Hybrid mechanism**: Pairs elements and recursively sorts the larger ones (like merge sort), then inserts the remaining elements in a carefully chosen order using binary search (like insertion sort)
+    - **Theoretical significance**: For decades, it held the record for the fewest comparisons needed for sorting small arrays. For larger arrays, newer algorithms have surpassed it, but they build on similar principles
+- Practical use
+    - Merge-insert sort: not used in practice for large data due to complexity and diminishing returns
+    - Merge sort & Quick sort: dominate practical use for large dataset due to efficency and adapatability
+    - Hybrid algo (eg. Timsort, Introsort) use insertion sort for small subarrays
+
+#### ```std::vector```
+- A dynamic array in the CPP STL lib. It's one of the most used containers becauses it combines
+    - Contiguous memory layout
+    - Auto resizing
+    - Convenient API
+- Core features
+
+    | Feature             | Description                                                    |
+    | ------------------- | -------------------------------------------------------------- |
+    | Dynamic sizing      | Grows/shrinks as needed (using `push_back`, `resize`, etc.)    |
+    | Random access       | Fast `O(1)` access to elements via `[]` or `.at()`             |
+    | Contiguous memory   | Elements are stored in a single, continuous block of memory    |
+    | Efficient iteration | Excellent performance due to **cache locality**                |
+    | STL compatible      | Works well with algorithms like `std::sort`, `std::find`, etc. |
+- Key operations
+
+    | Operation              | Complexity     | Notes                                     |
+    | ---------------------- | -------------- | ----------------------------------------- |
+    | `push_back()`          | Amortized O(1) | Adds element to the end                   |
+    | `pop_back()`           | O(1)           | Removes last element                      |
+    | `insert()` / `erase()` | O(n)           | Costly if not at the end (needs shifting) |
+    | `[]` or `.at()`        | O(1)           | Random access                             |
+    | `clear()`, `resize()`  | O(n)           | May involve copying or zeroing elements   |
+- Memory management
+    - When vector exceeds its capacity
+    - It allocates a bigger block (usualy 1.5-2x the old size)
+    - Copy all the existing elements to the new block
+    - Delete the old block
+
+#### ```std::deque```
+- Short for double-ended queue
+- A sequential container in CPP STL that allows
+    - Fast insertion & deletion at both ends
+    - Random access (slighly slower than vector)
+- Internal structure
+    - Unlike std::vector, which stores elements in contiguous memory, std::deque is usually implemented as a series of memory blocks (a segmented array) managed by a central directory.
+    - This enables:
+        - Constant time push/pop at both ends (O(1))
+        - No reallocation of the entire container like vector when growing from the front
+    - But:
+        - Random access is slightly slower than vector because of the segmented memory layout. 
+- Key operations
+
+    | Operation           | Complexity | Notes                             |
+    | ------------------- | ---------- | --------------------------------- |
+    | `push_back()`       | O(1)       | Add element to the end            |
+    | `push_front()`      | O(1)       | Add element to the beginning      |
+    | `pop_back()`        | O(1)       | Remove element from the end       |
+    | `pop_front()`       | O(1)       | Remove element from the beginning |
+    | `operator[] / at()` | O(1)       | Random access                     |
+    | `insert()/erase()`  | O(n)       | Anywhere in the middle            |
+
+- deque vs vector
+
+    | Feature        | `deque`                           | `vector`                          |
+    | -------------- | --------------------------------- | --------------------------------- |
+    | Memory layout  | Segmented blocks                  | Contiguous                        |
+    | Front insert   | Fast (`O(1)`)                     | Slow (`O(n)`)                     |
+    | Random access  | Fast (`O(1)`) but slightly slower | Very fast (`O(1)`)                |
+    | Cache locality | Worse                             | Better                            |
+    | Push back      | Fast                              | Fast (but may require reallocate) |
+
+    - cache locality: how efficiently a program accesses data in memory with respect to the CPU cache
 
 ## Notes
 ### Common CPP containers overview
