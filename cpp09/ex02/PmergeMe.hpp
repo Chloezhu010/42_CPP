@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 22:22:51 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/04 17:07:36 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/04 20:42:13 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <vector> // for std::vector
 #include <deque> // for std::deque
+#include <set>
 #include <string>
 #include <stdexcept>
 #include <sstream> // for istringstream
@@ -54,7 +55,7 @@ class PmergeMe
         ~PmergeMe();
 
         /* member functions */
-        void parseInput(int ac, char **av);
+        int parseInput(int ac, char **av);
         void sortVec();
         void sortDeq();
 

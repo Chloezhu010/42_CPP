@@ -2,35 +2,57 @@
 
 std::vector<size_t> getJacobIndice(size_t n)
 {
-    std::vector<size_t> result;
+    std::set<size_t> used;
+   std::vector<size_t> result;
+   
+   // generate jacobsthal nbr
+   size_t j0 = 0;
+   size_t j1 = 1;
+   while (j1 < n)
+   {
+        result.push_back(j1);
+        used.insert(j1);
+        size_t next = j1 + 2 * j0;
+        j0 = j1;
+        j1 = next;    
+   }
+   // add remaining indice
+   for (size_t i = 0; i < n; i++)
+   {
+        if (used.find(i) == used.end())
+            result.push_back(i);
+   }
+   result.erase(result.begin());
+    
+    // std::vector<size_t> result;
        
-    if (n == 0)
-        return (result);
-    /* - generate jacobsthal nbr up to next <= n
-       - store it in the jacob container 
-    */
-    std::vector<size_t> jacob;
-    jacob.push_back(0);
-    if (n >= 1)
-        jacob.push_back(1);
-    for (size_t i = 2; ; i++)
-    {
-        size_t next = jacob[i - 1] + jacob[i - 2] * 2;
-        if (n <= next)
-            break ;
-        jacob.push_back(next);
-    }
-    /* generate the insertion indice */
-    for (size_t j = 2; j < jacob.size(); j++)
-        result.push_back(jacob[j]);
-    result.push_back(0);
-    // fill in the rest of the indice
-    for (size_t k = 0; k < n; k++)
-    {
-        std::vector<size_t>::iterator it = std::find(jacob.begin(), jacob.end(), k);
-        if (it == jacob.end())
-            result.push_back(k);
-    }
+    // if (n == 0)
+    //     return (result);
+    // /* - generate jacobsthal nbr up to next <= n
+    //    - store it in the jacob container 
+    // */
+    // std::vector<size_t> jacob;
+    // jacob.push_back(0);
+    // if (n >= 1)
+    //     jacob.push_back(1);
+    // for (size_t i = 2; ; i++)
+    // {
+    //     size_t next = jacob[i - 1] + jacob[i - 2] * 2;
+    //     if (n <= next)
+    //         break ;
+    //     jacob.push_back(next);
+    // }
+    // /* generate the insertion indice */
+    // for (size_t j = 2; j < jacob.size(); j++)
+    //     result.push_back(jacob[j]);
+    // result.push_back(0);
+    // // fill in the rest of the indice
+    // for (size_t k = 0; k < n; k++)
+    // {
+    //     std::vector<size_t>::iterator it = std::find(jacob.begin(), jacob.end(), k);
+    //     if (it == jacob.end())
+    //         result.push_back(k);
+    // }
     return (result);
 }
 
@@ -52,19 +74,19 @@ void splitPairVec(const std::vector<int> &input, std::vector<int> &main,
     // }
     // else
     // {
-        for (size_t i = 0; i + 1 < input.size(); i += 2)
+    for (size_t i = 0; i + 1 < input.size(); i += 2)
+    {
+        if (input[i] > input[i + 1])
         {
-            if (input[i] > input[i + 1])
-            {
-                main.push_back(input[i]);
-                pend.push_back(input[i + 1]);
-            }
-            else
-            {
-                main.push_back(input[i + 1]);
-                pend.push_back(input[i]);
-            }
+            main.push_back(input[i]);
+            pend.push_back(input[i + 1]);
         }
+        else
+        {
+            main.push_back(input[i + 1]);
+            pend.push_back(input[i]);
+        }
+    }
         // std::vector<int>::const_iterator it = input.begin();
         // /* loop through the input numbers */
         // while ((it + 1) != input.end())
@@ -171,21 +193,21 @@ int main(int ac, char **av)
     //         std::cerr << "Error: invalid input\n";
     // }
 
-    // std::cout << "----Test getJacobIndice----\n";
-    // (void)ac;
-    // (void)av;
-    // size_t n = 13;
-    // std::vector<size_t> res = getJacobIndice(n);
-    // std::vector<size_t>::iterator it = res.begin();
-    // while (it != res.end())
-    // {
-    //     std::cout << *it << " ";
-    //     it++;
-    // }
-    // std::cout << "\n";
+    std::cout << "----Test getJacobIndice----\n";
+    (void)ac;
+    (void)av;
+    size_t n = 7;
+    std::vector<size_t> res = getJacobIndice(n);
+    std::vector<size_t>::iterator it = res.begin();
+    while (it != res.end())
+    {
+        std::cout << *it << " ";
+        it++;
+    }
+    std::cout << "\n";
 
     std::cout << "\n----Test splitPairVec----\n";
-    std::vector<int> input = {5, 2};
+    std::vector<int> input = {5, 2,8,1,6,3,9,4,7};
     std::vector<int> main = {};
     std::vector<int> pend = {};
     int leftover;
@@ -208,8 +230,8 @@ int main(int ac, char **av)
     // printVec(sorted);
 
     // std::cout << "\n----Test sortVecRecursive----\n";
-    // std::vector<int> input = {5, 2, 8, 1, 6, 3, 9, 4, 7};
-    // printVec(input);
+    // // std::vector<int> input = {5, 2, 8, 1, 6, 3, 9, 4, 7};
+    // // printVec(input);
 
     // sortVecRecursive(input);
     // printVec(input);

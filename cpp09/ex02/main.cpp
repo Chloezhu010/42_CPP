@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 22:23:02 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/04 17:51:22 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/04 21:26:22 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,18 @@ int main(int ac, char **av)
 {
     /* input parsing */
     PmergeMe pm;
-    pm.parseInput(ac, av);
-    /* debug */
-    std::cout << "\n---Debug: before---\n";
-    pm.printVec();
-    pm.printDeq();
-
-    pm.sortVec();
-    pm.sortDeq();
+    int res = pm.parseInput(ac, av);
+    if (res != -1)
+    {
+        /* show before after */
+        std::cout << "Before: ";
+        pm.printVec();
+        std::cout << "After: ";
+        pm.sortVec();
+        pm.sortDeq();
+        /* performance benchmark */
+        
+    }
 
     return (0);
 }
