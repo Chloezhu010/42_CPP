@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 22:22:59 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/04 15:48:02 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/04 17:50:32 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,21 +117,18 @@ std::vector<size_t> PmergeMe::getJacobIndice(size_t n)
 void PmergeMe::splitPairVec(const std::vector<int> &input, std::vector<int> &main, 
                                 std::vector<int> &pend, int &leftover)
 {
-    std::vector<int>::const_iterator it = input.begin();
-    /* loop through the input numbers */
-    while (it + 1 != input.end())
+    for (size_t i = 0; i + 1 < input.size(); i += 2)
     {
-        if (*it > *(it + 1))
+        if (input[i] > input[i + 1])
         {
-            main.push_back(*it);
-            pend.push_back(*(it + 1));
+            main.push_back(input[i]);
+            pend.push_back(input[i + 1]);
         }
         else
         {
-            main.push_back(*(it + 1));
-            pend.push_back(*it);
+            main.push_back(input[i + 1]);
+            pend.push_back(input[i]);
         }
-        it += 2;
     }
     /* check the last item */
     if (input.size() % 2 != 0)
@@ -143,21 +140,18 @@ void PmergeMe::splitPairVec(const std::vector<int> &input, std::vector<int> &mai
 void PmergeMe::splitPairDeq(const std::deque<int> &input, std::deque<int> &main,
                                 std::deque<int> &pend, int &leftover)
 {
-    std::deque<int>::const_iterator it = input.begin();
-    /* loop through the input numbers */
-    while (it + 1 != input.end())
+    for (size_t i = 0; i + 1 < input.size(); i += 2)
     {
-        if (*it > *(it + 1))
+        if (input[i] > input[i + 1])
         {
-            main.push_back(*it);
-            pend.push_back(*(it + 1));
+            main.push_back(input[i]);
+            pend.push_back(input[i + 1]);
         }
         else
         {
-            main.push_back(*(it + 1));
-            pend.push_back(*it);
+            main.push_back(input[i + 1]);
+            pend.push_back(input[i]);
         }
-        it += 2;
     }
     /* check the last item */
     if (input.size() % 2 != 0)
@@ -188,12 +182,55 @@ void PmergeMe::binaryInsertDeq(std::deque<int> &sorted, int value)
 /* recursive sorting */
 void PmergeMe::sortVecRecursive(std::vector<int> &data)
 {
-
+    std::vector<int> main;
+    std::vector<int> pend;
+    int leftover;
+    std::vector<size_t> insert_index;
+    
+    // if nb <= 1
+    if (data.size() <= 1)
+        return ;
+    // split the input
+    splitPairVec(data, main, pend, leftover);
+    // get insertion order
+    insert_index = getJacobIndice(pend.size());
+    // loop through pend to insert using binaryInsert
+    for (size_t i = 0; i < insert_index.size(); i++)
+    {
+        size_t index = insert_index[i];
+        int value = pend[index];
+        binaryInsertVec(main, value);
+    }
+    // insert leftover if there is
+    if (leftover != -1)
+        binaryInsertVec(main, leftover);
+    // update the input with sorted main chain
+    data = main;
 }
 
 void PmergeMe::sortDeqRecursive(std::deque<int> &data)
 {
-
+    std::deque<int> main;
+    std::deque<int> pend;
+    int leftover;
+    std::vector<size_t> insert_index;
+    
+    // split the input
+    splitPairDeq(data, main, pend, leftover);
+    // get insertion order
+    insert_index = getJacobIndice(pend.size());
+    // loop through pend to insert using binaryInsert
+    for (size_t i = 0; i < insert_index.size(); i++)
+    {
+        size_t index = insert_index[i];
+        int value = pend[index];
+        binaryInsertDeq(main, value);
+    }
+    // insert leftover if there is
+    if (leftover != -1)
+        binaryInsertDeq(main, leftover);
+    // update the input with sorted main chain
+    data = main;
 }
 
 /* member functions */
@@ -201,7 +238,7 @@ void PmergeMe::parseInput(int ac, char **av)
 {
     /* input check */
     if (ac <= 2)
-        std::cerr << "Error: Need at least two number to sort\n";
+        std::cerr << "Error: Need at least two numbers to sort\n";
     /* parse input */
     for (int i = 1; i < ac; i++)
     {
@@ -236,9 +273,46 @@ void PmergeMe::parseInput(int ac, char **av)
     }
 }
 
-/* getter */
+void PmergeMe::sortVec()
+{
+    std::vector<int> data = getVec();
+    sortVecRecursive(data);
+    /* debug */
+    std::cout << "sortVec debug: \n";
+    std::vector<int>::iterator it = data.begin();
+    while (it != data.end())
+    {
+        std::cout << *it << " ";
+        it++;
+    }
+    std::cout << "\n";
+}
 
-/* setter */  
+void PmergeMe::sortDeq()
+{
+    std::deque<int> data = getDeq();
+    sortDeqRecursive(data);
+    /* debug */
+    std::cout << "sortDeq debug: \n";
+    std::deque<int>::iterator it = data.begin();
+    while (it != data.end())
+    {
+        std::cout << *it << " ";
+        it++;
+    }
+    std::cout << "\n";
+}
+
+/* getter */
+std::vector<int> PmergeMe::getVec()
+{
+    return (_vec);
+}
+
+std::deque<int> PmergeMe::getDeq()
+{
+    return (_deq);
+}
 
 /* debug */
 void PmergeMe::printVec()

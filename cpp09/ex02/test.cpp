@@ -37,22 +37,51 @@ std::vector<size_t> getJacobIndice(size_t n)
 void splitPairVec(const std::vector<int> &input, std::vector<int> &main, 
                     std::vector<int> &pend, int &leftover)
 {
-    std::vector<int>::const_iterator it = input.begin();
-    /* loop through the input numbers */
-    while (it + 1 != input.end())
-    {
-        if (*it > *(it + 1))
+    // if (input.size() == 2)
+    // {
+    //     if (input[0] > input[1])
+    //     {
+    //         main.push_back(input[0]);
+    //         pend.push_back(input[1]);
+    //     }
+    //     else
+    //     {
+    //         main.push_back(input[1]);
+    //         pend.push_back(input[0]);
+    //     }
+    // }
+    // else
+    // {
+        for (size_t i = 0; i + 1 < input.size(); i += 2)
         {
-            main.push_back(*it);
-            pend.push_back(*(it + 1));
+            if (input[i] > input[i + 1])
+            {
+                main.push_back(input[i]);
+                pend.push_back(input[i + 1]);
+            }
+            else
+            {
+                main.push_back(input[i + 1]);
+                pend.push_back(input[i]);
+            }
         }
-        else
-        {
-            main.push_back(*(it + 1));
-            pend.push_back(*it);
-        }
-        it += 2;
-    }
+        // std::vector<int>::const_iterator it = input.begin();
+        // /* loop through the input numbers */
+        // while ((it + 1) != input.end())
+        // {
+        //     if (*it > *(it + 1))
+        //     {
+        //         main.push_back(*it);
+        //         pend.push_back(*(it + 1));
+        //     }
+        //     else
+        //     {
+        //         main.push_back(*(it + 1));
+        //         pend.push_back(*it);
+        //     }
+        //     it += 2;
+        // }
+    // }
     /* check the last item */
     if (input.size() % 2 != 0)
         leftover = input.back();
@@ -88,7 +117,36 @@ void binaryInsertVec(std::vector<int> &sorted, int value)
     }
     // insert the value
     sorted.insert(sorted.begin() + start, value);
+}
 
+void sortVecRecursive(std::vector<int> &data)
+{
+    std::vector<int> main;
+    std::vector<int> pend;
+    int leftover;
+    std::vector<size_t> insert_index;
+    
+    // split the input
+    splitPairVec(data, main, pend, leftover);
+    std::cout << "main: "; printVec(main); //debug
+    std::cout << "pend: "; printVec(pend); //debug
+    std::cout << "leftover: " << leftover << "\n"; //debug
+    // get insertion order
+    insert_index = getJacobIndice(pend.size());
+    std::cout << "pend size: " << pend.size() << "\n"; //debug
+    // loop through pend to insert using binaryInsert
+    for (size_t i = 0; i < insert_index.size(); i++)
+    {
+        size_t index = insert_index[i];
+        std::cout << "index: " << index << "\n"; //debug
+        int value = pend[index];
+        std::cout << "insert value: " << value << "\n"; //debug
+        binaryInsertVec(main, value);
+    }
+    // insert leftover if there is
+    if (leftover != -1)
+        binaryInsertVec(main, leftover);
+    data = main;
 }
 
 int main(int ac, char **av)
@@ -113,21 +171,21 @@ int main(int ac, char **av)
     //         std::cerr << "Error: invalid input\n";
     // }
 
-    std::cout << "----Test getJacobIndice----\n";
-    (void)ac;
-    (void)av;
-    size_t n = 13;
-    std::vector<size_t> res = getJacobIndice(n);
-    std::vector<size_t>::iterator it = res.begin();
-    while (it != res.end())
-    {
-        std::cout << *it << " ";
-        it++;
-    }
-    std::cout << "\n";
+    // std::cout << "----Test getJacobIndice----\n";
+    // (void)ac;
+    // (void)av;
+    // size_t n = 13;
+    // std::vector<size_t> res = getJacobIndice(n);
+    // std::vector<size_t>::iterator it = res.begin();
+    // while (it != res.end())
+    // {
+    //     std::cout << *it << " ";
+    //     it++;
+    // }
+    // std::cout << "\n";
 
     std::cout << "\n----Test splitPairVec----\n";
-    std::vector<int> input = {5, 2, 8, 1, 6, 3, 9, 4, 7};
+    std::vector<int> input = {5, 2};
     std::vector<int> main = {};
     std::vector<int> pend = {};
     int leftover;
@@ -138,18 +196,23 @@ int main(int ac, char **av)
     printVec(pend);
     std::cout << "leftover: " << leftover << "\n";
 
-    std::cout << "\n----Test binaryInsertVec----\n";
-    std::vector<int> sorted = {5, 6, 8, 9};
-    std::vector<int> pending = {2, 1, 3, 4};
-    int left = 7;
+    // std::cout << "\n----Test binaryInsertVec----\n";
+    // std::vector<int> sorted = {5, 6, 8, 9};
+    // std::vector<int> pending = {2, 1, 3, 4};
+    // int left = 7;
+    // /* using std::lower_bound */
+    // // std::vector<int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), 4);
+    // // sorted.insert(pos, 4);
+    // /* using handmade binaryInsertVec function */
+    // binaryInsertVec(sorted, 12);
+    // printVec(sorted);
 
-    // std::vector<int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), 4);
-    // sorted.insert(pos, 4);
-    
-    // using handmade binaryInsertVec function
-    binaryInsertVec(sorted, 12);
-    printVec(sorted);
+    // std::cout << "\n----Test sortVecRecursive----\n";
+    // std::vector<int> input = {5, 2, 8, 1, 6, 3, 9, 4, 7};
+    // printVec(input);
 
+    // sortVecRecursive(input);
+    // printVec(input);
 
     return (0);
 }

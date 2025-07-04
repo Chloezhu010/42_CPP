@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 22:22:51 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/04 13:24:10 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/04 17:07:36 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ class PmergeMe
         void sortDeq();
 
         /* getter */
-
-        /* setter */
-
+        std::vector<int> getVec();
+        std::deque<int> getDeq();
+        
         /* debug functions */
         void printVec();
         void printDeq();
