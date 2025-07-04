@@ -6,7 +6,7 @@
 /*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 22:22:51 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/04 20:42:13 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/04 21:32:49 by chloe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <stdexcept>
 #include <sstream> // for istringstream
 #include <algorithm> // for find
+#include <ctime> // for timing
 
 class PmergeMe
 {
