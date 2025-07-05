@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 22:22:59 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/04 22:11:07 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/05 12:11:09 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -344,4 +344,14 @@ void PmergeMe::printDeq()
         it++;
     }
     std::cout << "\n";
+}
+
+void PmergeMe::cppSortVec()
+{
+    std::sort(_vec.begin(), _vec.end());
+}
+
+void PmergeMe::cppSortDeq()
+{
+    std::sort(_deq.begin(), _deq.end());
 }

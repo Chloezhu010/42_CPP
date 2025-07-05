@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 22:22:51 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/04 21:32:49 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/05 12:10:44 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <sstream> // for istringstream
 #include <algorithm> // for find
 #include <ctime> // for timing
+#include <utility>
 
 class PmergeMe
 {
@@ -67,6 +68,8 @@ class PmergeMe
         /* debug functions */
         void printVec();
         void printDeq();
+        void cppSortVec();
+        void cppSortDeq();
 };
 
 #endif
