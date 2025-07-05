@@ -447,14 +447,23 @@
     - cache locality: how efficiently a program accesses data in memory with respect to the CPU cache
 #### ```std::lower_bound```
 - A binary search algo from the ```<algorithm>``` header
-- Find the 1st position in a sorted range where a value could be inserted without breaking the order
+- Return iterator to the first element that is ```>= value```
 - Function signature
     ```cpp
     template <class ForwardIt, class T>
     ForwardIt lower_bound(ForwardIt first, ForwardIt last, const T& value);
     ```
-- Return value
-    - An iterator pointing to the 1st element that is not less than value
+#### ```std::upper_bound```
+- A binary search algo from the ```<algorithm>``` header
+- Return iterator to the first element that is ```> value```
+- Function signature
+    ```cpp
+    template <class ForwardIt, class T>
+    ForwardIt upper_bound(ForwardIt first, ForwardIt last, const T& value);
+    ```
+- Insertion patterns
+    - ```upper_bound``` tends to insert new elements later in equal ranges
+    - ```lowerer_bound``` inserts earlier in equal ranges
 
 ## Notes
 ### Common CPP containers overview

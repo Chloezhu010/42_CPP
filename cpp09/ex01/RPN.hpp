@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chloe <chloe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: czhu <czhu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:51:10 by chloe             #+#    #+#             */
-/*   Updated: 2025/07/02 21:56:26 by chloe            ###   ########.fr       */
+/*   Updated: 2025/07/05 14:29:10 by czhu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <string>
 #include <sstream> // for istringstream
 #include <stdexcept> // for runtime_error
+#include <cstdlib> // for atoi
 
 class RPN
 {

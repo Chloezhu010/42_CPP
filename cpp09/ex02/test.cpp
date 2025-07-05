@@ -196,7 +196,7 @@ int main(int ac, char **av)
     std::cout << "----Test getJacobIndice----\n";
     (void)ac;
     (void)av;
-    size_t n = 7;
+    size_t n = 4;
     std::vector<size_t> res = getJacobIndice(n);
     std::vector<size_t>::iterator it = res.begin();
     while (it != res.end())
