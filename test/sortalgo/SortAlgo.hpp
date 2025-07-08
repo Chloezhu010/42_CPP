@@ -40,7 +40,18 @@ void selectionSort(T& container)
 template <typename T>
 void insertionSort(T& container)
 {
-
+    size_t len = container.size();
+    for (size_t i = 1; i < len; i++)
+    {
+        typename T::value_type key = container[i]; // store the value before shifting
+        int j = i - 1;
+        while (j >= 0 && container[j] > key)
+        {
+            container[j + 1] = container[j]; // array right shift
+            --j; // comparison left shift
+        }
+        container[j + 1] = key;
+    }
 }
 
 // merge sort

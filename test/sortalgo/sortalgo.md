@@ -44,9 +44,27 @@
     - Shift larger elements one position to the right to make space.
     - Insert key into its correct position in the sorted portion.
     - Repeat this for each element until the array is sorted.
-
 - Visual example
+    - Initial array: [5,3,8,4,2]
+    - Step 1: i = 1, key = 3, Compare with 5 → shift 5, Insert 3 before 5
+        - Result: [3, 5, 8, 4, 2]
+    - Step 2: i = 2, key = 8, Compare with 5 → no shift, 8 stays in place
+        - Result: [3, 5, 8, 4, 2]
+    - Step 3: i = 3, key = 4, Compare with 8 → shift 8, Compare with 5 → shift 5, Compare with 3 → no shift, Insert 4 after 3
+        - Result: [3, 4, 5, 8, 2]
+    - Step 4: i = 4, key = 2, Compare with 8 → shift 8, Compare with 5 → shift 5, Compare with 4 → shift 4, Compare with 3 → shift 3, Insert 2 at the beginning
+        - Result: [2, 3, 4, 5, 8]
+    - ✅ Final sorted array: [2, 3, 4, 5, 8]
 - Pseudo code
+    ```
+    for i from 1 to n - 1:
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j = j - 1
+        arr[j + 1] = key
+    ```
 
 ## Merge sort
 - Intro
