@@ -11,8 +11,11 @@ int main()
     // selectionSort(vec);
     // selectionSort(deq);
 
-    insertionSort(vec);
-    insertionSort(deq);
+    // insertionSort(vec);
+    // insertionSort(deq);
+
+    mergeSort(vec.begin(), vec.end());
+    mergeSort(deq.begin(), deq.end());
     
     printContainer(vec);
     printContainer(deq);

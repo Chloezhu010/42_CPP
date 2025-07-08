@@ -7,6 +7,7 @@
 #include <list>
 
 /* sorting algo */
+// bubble sort
 template <typename T>
 void bubbleSort(T& container)
 {
@@ -21,6 +22,7 @@ void bubbleSort(T& container)
     }
 }
 
+// selection sort
 template <typename T>
 void selectionSort(T& container)
 {
@@ -37,6 +39,7 @@ void selectionSort(T& container)
     }
 }
 
+// insertion sort
 template <typename T>
 void insertionSort(T& container)
 {
@@ -55,6 +58,38 @@ void insertionSort(T& container)
 }
 
 // merge sort
+template <typename T>
+void mergeSort(T begin, T end)
+{
+    // if only 1 or 0 elements, no need for sorting
+    if (container.size() <= 0)
+        return ;
+    // find the mid point
+    typename T::iterator mid = container.begin() + std::distance(container.begin(), container.end()) / 2;
+    // recursively sort the left and right halves
+    mergeSort(container.begin(), mid);
+    mergeSort(mid, container.end());
+    // merge the sorted halves using temporary buffer
+    T temp(container.size()); // allocate temp buffer with same size
+    typename T::value_type::iterator left = container.begin();
+    typename T::value_type::iterator right = mid;
+    typename T::value_type::iterator end = container.end();
+    while (left != mid && right != end)
+    {
+        if (*left < *right)
+            temp.push_back(*left);
+        else
+            temp.push_back(*right);
+        left++;
+        right++;
+    }
+    // copy remaining elements
+    temp.insert(temp.end(), left, mid);
+    temp.insert(temp.end(), right, mid);
+    // copy merged result back to original range
+    std::move(temp.begin(), temp.end(), container.begin());
+}
+
 // quick sort
 // heap sort
 

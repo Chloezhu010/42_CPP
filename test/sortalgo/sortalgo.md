@@ -68,9 +68,59 @@
 
 ## Merge sort
 - Intro
+    - A divide-and-conquer sorting algo that
+    - Divide the input array into smaller subarrays
+    - Sort each subarray recursively
+    - Merge the sorted subarray back together
 - Core idea
+    - Divide the array into 2 halves
+    - Recursively sort both halves
+    - Merge the 2 sorted halves into one sorted array
+    - The key operation is the merge step, which combines two sorted arrays into one sorted result
 - Visual example
+    - Input: [5, 3, 8, 4, 2, 7, 1, 6]
+    - Split phase
+        ```
+        [5, 3, 8, 4, 2, 7, 1, 6]
+        → [5, 3, 8, 4] and [2, 7, 1, 6]
+        → [5, 3] [8, 4] [2, 7] [1, 6]
+        → [5] [3] [8] [4] [2] [7] [1] [6] ← base case (1 element = already sorted)
+        ```
+    - Merge phase
+        ```
+        [3, 5] [4, 8] [2, 7] [1, 6]
+
+        // then merge [3,5] [4,8]
+        [3, 4, 5, 8]
+        // merge [2,7] [1,6]
+        [1, 2, 6, 7]
+
+        // final merge
+        [1, 2, 3, 4, 5, 6, 7, 8]
+        ```
+    
 - Pseudo code
+    ```
+    function mergeSort(arr):
+        if size of arr <= 1:
+            return arr
+
+        mid = size of arr / 2
+        left = mergeSort(arr[0:mid])
+        right = mergeSort(arr[mid:end])
+
+        return merge(left, right)
+
+    function merge(left, right):
+        result = empty array
+        while both left and right are not empty:
+            if left[0] < right[0]:
+                append left[0] to result and remove it from left
+            else:
+                append right[0] to result and remove it from right
+        append any remaining elements of left and right to result
+        return result
+    ```
 
 ## Quick sort
 - Intro
